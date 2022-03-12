@@ -1,2 +1,2 @@
 # general_learning
-A general repo for varios programming topics to ease the burden of making multiple repos.
+A general repo for various programming topics to ease the burden of making multiple repos.
