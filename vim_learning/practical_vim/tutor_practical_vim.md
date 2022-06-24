@@ -7,9 +7,12 @@ geometry: margin=2.54cm
 
 # Intro
 
+
+
 I like the book 'Practical Vim' by Drew Neil, but the examples are scattered through many text files.  This brings them together under a single markdown document that somewone could work through similarly to the vimtutor document that comes with vim. Also included are summaries of tips that don't have accompanying examples. To learn vim I first recommend going through the vimtutor document a few times, then going through this document while reading the full text of Practical Vim.  I recommend going through vimtutor before this to learn the very basics however.  I may consider splitting this file into several by sections if having it all in one document makes limiting the scope of commands to the example we are working on cumbersome. Also worth noting that not all tips have example files.  Ones that do have examples are marked with *Example*.
 
-Another random note: I treat `<Esc>` as synoymous with `<C-[>`.
+
+Another random note: I treat `<Esc>` as synoymous with `<C-[>  `.
 
 
 ## 1. The Vim Way
@@ -23,6 +26,7 @@ Another random note: I treat `<Esc>` as synoymous with `<C-[>`.
 ---
 
 *practical-vim-2nd/the_vim_way/0_mechanics.txt*
+
 ```
 Line one
 Line two
@@ -899,10 +903,10 @@ record macro (cursor on `1`. of one): `qa0f.r)W~jq`
 *practical-vim-2nd/macros/consecutive-lines.txt*
 
 ```
-2) One
-2) Two
-3) Three
-4) Four
+2. one
+2. two
+3. three
+4. four
 ```
 ---
 
@@ -913,6 +917,29 @@ Can also linewise-visually select lines and  go `:`<,`>norm @a`
 ### Tip 69: Append Commands to a Macro
 Use a capital letter to append to a macro. Works for yanking as well. Stored in the same registers as yanks.
 
+### Tip 70: Append Commands to a Macro
+---
 
+*practical_vim/macros/ruby_module/animal.rb*
 
+```
 
+class Animal
+  # implementation
+end
+```
+
+---
+
+source `practical_vim/macros/ruby_module/rc.vim`
+
+```
+`cd code/macros/ruby_module`
+`:args *.rb`
+```
+
+can record macro; then undo changes with `:edit!` and then go `:argdo normal @a`
+
+can make the buffer advance files in arglist at end: `qA:nextq` then `22@a`
+
+can save everything with `:wall` or `:argdow write`
