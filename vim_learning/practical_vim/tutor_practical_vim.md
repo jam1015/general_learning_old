@@ -937,9 +937,56 @@ source `practical_vim/macros/ruby_module/rc.vim`
 `cd code/macros/ruby_module`
 `:args *.rb`
 ```
+hit `:first` to go to beginning of argument list.
 
-can record macro; then undo changes with `:edit!` and then go `:argdo normal @a`
+can record macro; then undo changes with `:edit!` and then go `:argdo normal @a` (note that `:edit!` won't work if we've saved the file.
 
 can make the buffer advance files in arglist at end: `qA:nextq` then `22@a`
 
-can save everything with `:wall` or `:argdow write`
+can save everything with `:wall` or `:argdo write`
+
+
+### Tip 71: Append Commands to a Macro
+
+---
+
+*practical-vim-2nd/macros/incremental.txt*
+
+```
+
+1) partridge in a pear tree
+2) turtle doves
+3) French hens
+4) Calling birds
+5) golden rings
+
+```
+
+---
+
+macro to record is:
+
+```
+let i=1
+qa
+I<C-r>=i<CR>
+<esc>
+let i += 1
+q
+```
+
+### Tip 72: Append Commands to a Macro
+Can put a macro with `:put a`, edit the macro, and re-yank it; better not to do a line-wise yank because then there might be a new-line character.
+
+Can use the substitute command
+`:let @a=substitute(@a, '\~', 'vU', 'g')`
+
+# Part V - Patterns
+
+## Chapter 12: Matching Patterns and Literals
+
+### Tip 73: Tune Case Sensitivity of Search Patterns
+
+can type `\c` or `\C` 
+
+### Tip 74: Use the \v Pattern Switch for Regex Searches 
