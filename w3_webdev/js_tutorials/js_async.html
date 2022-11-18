@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--- called js_tutorials because this page was originally going to host all the tutorials --->
+
+<head>
+	<title>W3 JS Async</title>
+	<link rel="icon" type="image/x-icon" href="../images/watermelon_favicon/favicon.ico">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</script>
+	<style>
+		pre {
+			background-color: #f9ebf9;
+		}
+
+		tt,
+		code {
+			background-color: #f9ebf9;
+		}
+	</style>
+</head>
+
+
+
+<header>
+	<a href="../index.html" alt="the index page"> go back to index</a>
+</header>
+
+<body>
+	<h1>JS Callbacks</h1>
+	<pre><code>function myDisplayer(some) {
+  document.getElementById(&quot;demo&quot;).innerHTML = some;
+  }
+
+  function myCalculator(num1, num2, myCallback) {
+    let sum = num1 + num2;
+      myCallback(sum);
+      }
+
+      myCalculator(5, 5, myDisplayer);</code></pre>
+
+	<h1>JS Asynchronous Functons</h1>
+	<pre><code>setTimeout(myFunction, 3000);
+
+function myFunction() {
+  document.getElementById(&quot;demo&quot;).innerHTML = &quot;I love You !!&quot;;
+  }</code></pre>
+	Or can use this trick to pass in an argument:
+
+	<pre><code>setTimeout(function() { myFunction(&quot;I love You !!!&quot;); }, 3000);
+
+function myFunction(value) {
+  document.getElementById(&quot;demo&quot;).innerHTML = value;
+}</code></pre>
+	Good for when you have to wait for something:
+	<pre><code>&lt;p id=&quot;demo&quot;&gt;&lt;/p&gt;
+
+&lt;script&gt;
+function myDisplayer(some) {  
+  document.getElementById(&quot;demo&quot;).innerHTML = some;
+}
+
+function getFile(myCallback) {
+  let req = new XMLHttpRequest();
+  req.open(&#39;GET&#39;, &quot;mycar.html&quot;);
+  req.onload = function() {
+    if (req.status == 200) {
+      myCallback(this.responseText);
+    } else {
+      myCallback(&quot;Error: &quot; + req.status);
+    }
+  }
+  req.send();
+}
+
+getFile(myDisplayer); </code></pre>
+	<tt>mycar.html</tt> is:
+	<pre><code>&lt;img src=&quot;img_car.jpg&quot; alt=&quot;Nice car&quot; style=&quot;width:100%&quot;&gt;
+
+&lt;p&gt;A car is a wheeled, self-powered motor vehicle used for transportation.
+Most definitions of the term specify that cars are designed to run primarily on roads, to have seating for one to eight people, to typically have four wheels.&lt;/p&gt;
+
+&lt;p&gt;(Wikipedia)&lt;/p&gt;</code></pre>
+	<h1>JS Promises</h1>
+
+<p>Has both producing code and consuming code. Producing code takes some time, consuming code waits for the result.</p>
+<pre><code>let myPromise = new Promise(function(myResolve, myReject) {
+// &quot;Producing Code&quot; (May take some time)
+
+  myResolve(); // when successful
+  myReject();  // when error
+});
+
+// &quot;Consuming Code&quot; (Must wait for a fulfilled Promise)
+myPromise.then(
+  function(value) { /* code if successful */ },
+  function(error) { /* code if some error */ }
+);</code></pre>
+
+<h1>JS Async/Await</h1>
+<pre><code>async function getFile() {
+  let myPromise = new Promise(function(resolve, reject) {
+    let req = new XMLHttpRequest();
+    req.open(&#39;GET&#39;, &quot;mycar.html&quot;);
+    req.onload = function() {
+      if (req.status == 200) {
+        resolve(req.response);
+      } else {
+        resolve(&quot;File not Found&quot;);
+      }
+    };
+    req.send();
+  });
+  document.getElementById(&quot;demo&quot;).innerHTML = await myPromise;
+}
+
+getFile();</code></pre>
+
+</body>
+
+</html>

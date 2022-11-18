@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--- called js_tutorials because this page was originally going to host all the tutorials --->
+
+<head>
+	<title>Jordan's W3 Javascript Tutorials</title>
+	<link rel="icon" type="image/x-icon" href="../images/watermelon_favicon/favicon.ico">
+
+	<script>
+		function add_to_paragraph() {
+			document.getElementById("script_explanation").innerHTML = "When a script runs and creates a function we can then use the function in for example in an onclick attribute. We can have this script in the head, in a separarate file, or in the body. In the body might be better to have it at bottom because script interpretation delays display. Can have it in external file as well, called using a filepath (or a URL of a script). For example we can add to or take away from this paragraph using a function declared in the head.";
+		}
+
+		function take_from_paragraph() {
+			document.getElementById("script_explanation").innerHTML = "When a script runs and creates a function we can then use the function in for example in an onclick attribute. We can have this script in the head, in a separarate file, or in the body. In the body might be better to have it at bottom because script interpretation delays display. Can have it in external file as well, called using a filepath (or a URL of a script).";
+		}
+	</script>
+	<style>
+		pre {
+			background-color: #f9ebf9;
+		}
+
+		tt {
+			background-color: #f9ebf9;
+		}
+	</style>
+</head>
+
+
+<body>
+	<a href="../index.html" alt="the index page"> go back to index</a>
+
+	<hr>
+	<h1 id=firstheader>basic examples from front matter</h1>
+	<p id=explanatory_paragraph>These examples are just demonstrations of the abilities of javascript</p>
+	<h2>Changing the pic of famous rabbi</h2>
+	<img id="rabbi" src="../images/Rabban_Gamliel.jpg" , style="width:200px">
+	<br>
+	<button onclick="document.getElementById('rabbi').src='../images/hillel.jpg'">See rabbi Hillel</button>
+	<button onclick="document.getElementById('rabbi').src='../images/Rabban_Gamliel.jpg'">See rabbi Gamliel</button>
+	<br>
+	<button type="button" onclick="document.getElementById('firstheader').style.backgroundColor='peru'">Change
+		backgroundColor</button>
+	<button type="button" onclick="document.getElementById('explanatory_paragraph').style.fontSize='40px'">Change
+		font</button>
+	<br>
+	<button type="button" onclick="document.getElementById('explanatory_paragraph').style.display='none'">Hide the
+		paragraph</button>
+	<button type="button" onclick="document.getElementById('explanatory_paragraph').style.display='block'">Show the
+		paragraph</button>
+
+
+	<hr>
+	<h1>JS Where To</h1>
+	<p id=script_explanation>When a script runs and creates a function we can then use the function in for example
+		in an onclick attribute. We can have this script in the head, in a separarate file, or in the body. In the
+		body might be better to have it at bottom because script interpretation delays display. Can have it in
+		external file as well, called using a filepath (or a URL of a script). </p>
+	<button type="button" onclick="add_to_paragraph()">Add to paragraph</button>
+	<button type="button" onclick="take_from_paragraph()">Take from paragraph</button>
+
+	<hr>
+	<h1>JS Output</h1>
+	<script>
+		function window_alert() {window.alert("this is a window alert");}
+		function document_write() {document.write("we just wrote the whole document!");}
+		function inner_html_change() {document.getElementById("windowalert_listitem").innerHTML = "Can use a window alert. This sentence added on from previous button.";}
+		function console_log() {console.log("here is a message for the console");}
+	</script>
+
+	<p>
+	<ul>
+		Can use the document.getElementById("example_id").innerHTML("some html contents here") as above.
+		<br>
+		<li>
+			This button changes the content of the next listitem: <button type="button"
+				onclick="inner_html_change()">change inner html of next item</button>
+		</li>
+
+		<li>
+			<div id="windowalert_listitem" style="display:inline">Can use a window alert.</div> <button type="button"
+				onclick="window_alert()">cause window alert</button>
+		</li>
+
+		<li>
+			Can also use document.write.It will delete all html.<button style="background-color:red" ,type="button"
+				onclick="document_write()">rewrites_the_document</button>
+		</li>
+
+		<li>
+			can also put output to the JS console.<button type="button" onclick=console_log()> send message to
+				console</button>
+		</li>
+
+		<li>
+			Can print out the page; pretty much the extent of JS's IO capabilities <button type="button"
+				onclick=window.print()> print</button>
+		</li>
+	</ul>
+	</p>
+
+
+	<hr>
+	<h1>JS Statements</h1>
+	<p>
+		JS statements are ended with a semicolon. White space ignored. Use good line lengths. Thins grouped together in
+		blocks. There are keywords like 'let', 'var', 'consst', 'if', etc.
+	</p>
+
+	<hr>
+	<h1>JS Syntax</h1>
+	<p>Can redeclare with `var` and nothing will change.
+	<pre>
+				var carname = "Volvo";
+			    var carname;
+
+			</pre>
+	Be careful of typecoversions. Dollars sign is a legal character but don't use it for identifiers.
+	</p>
+
+	<hr>
+	<h1 id="random_id">JS let</h1>
+	<p>Variables with let can't be redeclared, must be declared before use, have block scope. Can't redeclare in same
+		block. with var can use before declared, called `hoisting`, doesn't work with `let`.</p>
+
+	<hr>
+	<h1>JS Const</h1>
+	<p>Can't be reeclared or reassigned; has block scope. Always use this unles syou know it will change; for arrays,
+		objects, functions, regexes. It is a constant reference to a value, so you can change certain properties of
+		objects if it is a pointer to smewhere else in emmory. The strong hoisting that happens with var doesn't happen
+		with const</p>
+
+	<hr>
+	<h1>JS Operators</h1>
+	<p>Generally pretty straigntforward. Will learn more later. <tt>||</tt> can be sued to return the left or right in
+		case where left is falsy. <tt>??</tt> returns RHS when LHS is nullish.</p>
+
+	<hr>
+	<h1>JS Assignment</h1>
+	<p>Pretty much expected with the [operation]= syntax.</p>
+
+
+	<hr>
+	<h1>JS Data Types</h1>
+	<p>Numbers converted to strings. Types are dynami; variable can change types. No real distinction between int and
+		float, just a number type. Can do 134e-5 or 456e13 for large numbers. Arrays are zero based. Will learn more
+		later. Can use typeof operator. Variables are undefined before we initialize them. Can also set variable to
+		undefined. Empty values are different from undefined.</p>
+
+
+	<hr>
+	<h1>JS Functions</h1>
+	<p>function myfunction(){}. <br> Variables in functions have local scope. Maybe declaraton with `let` vs `var` vs
+		`const` affects the accessabity of variables defined outside the function. </p>
+
+	<hr>
+	<h1>JS Objects</h1>
+	<p>
+	<pre>const person = {
+		firstName: "John",
+		lastName: "Doe",
+		age: 50,
+		eyeColor: "blue"
+		};</pre>
+	Can access properties like objectName.propertyName or objectName["propertyName"]</p>
+
+	<hr>
+	<h1>JS Events</h1>
+	<p id="event_paragraph">
+		General syntax is
+		<tt>
+			&lt;element event="some Javascript"&gt;
+		</tt>
+		<br>
+		<tt>
+			&lt;button onclick='document.getElementById("haha").style.border="#11fa2c"'&gt;
+		</tt>
+
+		<button onclick='document.getElementById("event_paragraph").style.border="solid #aa3544 10px"'>Change the border
+			of the paragraph</button>
+		Easier to define a function in advance.
+		<br>
+		Can use a <tt>this</tt> word to change something itself.
+	</p>
+	<button onclick="this.innerHTML=Date()">Click this button to make it display the date.</button>
+	<hr>
+	<h1>JS Strings</h1>
+	<p>Nothing I haven't seen before. Can escabe basckslashes, and quotes. Six others that don't make sense in html that
+		were for teletype machines.</p>
+	<p>Can define string as object; but don't!
+	</p>
+
+	<hr>
+	<h1>JavaScript String Methods</h1>
+	<pre>
+let haha = "lodeedooo";
+let len = haha.length;
+		</pre>
+	<br><br>
+	<h2>substring methods</h2>
+	<tt>slice(start, end)</tt> (end not included).can take negative parameters, or a single parameter (slices out rest
+	of string).
+	<br>
+	<br>
+	<tt>substring(start, end)</tt> can't take negative indices.
+	<br>
+	<br>
+	and <tt>substr(start, length)</tt>. you supply the length to
+	<br>
+	<br>
+	<h2>more methods</h2>
+	Replace content with .replace() can use a string or a regex (doesn't use quotes), <tt>/i</tt> at end of regex for
+	case
+	insensitive.
+	use <tt>/g</tt> flag in regex for global replacement. A regex in JS uses the pattern: <tt>/pattern/modifiesrs;</tt>.
+	<br>
+	<br>
+	<tt>string.toUpperCase</tt>
+	<br>
+	<br>
+	<tt>strin.toLowerCase</tt>
+	<br>
+	<br>
+	<tt>string.concat(divider, toAddOn)</tt>
+	can use + instead of concat
+	<br>
+	<br>
+	trim
+	gets rid of white space
+	<br>
+	all these methods replace, not change
+	<br>
+	<br>
+	There is <tt>string.padstart(n,"padstring")</tt> and <tt>string.padend(n,"padstring")</tt>
+	<br>
+	<tt>text.charAt(index)</tt>
+	<br>
+	<tt>text.charAt(index)</tt>
+	<br><br>
+	Can square-bracket string, but it might cause problems. Namely might return undefined with no error, and can't
+	assign: that is, you can't repace a letter in a string with the square brackets.
+
+	<br><br>
+	<tt>test.split(",")</tt> will split a string into a vector with each element being what was separated by a comma. No
+	argument will return an array with whole string at <tt>0</tt>. Empty string argument <tt>""</tt> will give a
+	character
+	at each index of array.
+	<br><br>
+	<h2>JS String Search</h2>
+	<tt>indexOf()</tt> and <tt>lastIndexOf()</tt> for a particular substring. Can accept a second parameter, where to
+	start
+	the search.
+	<br>
+	<br>
+	<tt>search() can take a regex, but can't take a 'start-searching' argument</tt>
+	<br>
+
+	<h2>JS String Match</h2>
+	<tt>match()</tt> searches a string for a match against a regex, and returns the matches as an array. Will only
+	indlude
+	first match unless <tt>/g</tt> moddifier is included. Recall that all of these are methods of string objects.
+
+	<h2>JS String Includes</h2>
+	<tt>search()</tt> takes a string and returns <tt>true</tt> or <tt>false</tt> baset on whether the string is a
+	substring.
+
+	<h2>startswith/endswith</h2>
+	take a string and optional <tt>start search</tt>/<tt>length</tt> choice. Note <tt>length</tt> is number of
+	characters
+	while <tt>start-searcch</tt> is an index.
+
+	<h1>JS Template Literals</h1>
+	Like strings but with backtics, can include single and touble quotes, allow multiline strings. Can substitute a
+	variabve
+	with <tt>${variableName}</tt> syntax. Or can do a mathematical operation. Good for programatically writing out
+	<tt>HTML</tt>.
+
+	<h1>JS Numbers</h1>
+	Always 64 bit (double precision) with numbers in bits <tt>0</tt> throu8gh <tt>51</tt>. <tt>52</tt> through
+	<tt>62</tt>
+	are the exponent. Sign is bit <tt>63</tt>. Integers accurate up to 15 digits. Floating point numbers have small
+	errors.
+	Could help solve problems with floating point numbers by doing extra multiplications/divisions.
+
+	<br>
+	<br>
+
+	Adding a number and a string results in a strin concatenation. Evaluated left to right.
+
+	Other operations will try to convert strings to a number.
+	<tt>NaN</tt> like in <tt>MATLAB</tt>. <tt>typeof</tt> returns number. There is also <tt>infinity</tt>. You get that
+	when
+	you divide by zero.
+	<br>
+	<br>
+	Prefix with <tt>0x</tt> to get hexadecimal. Can do <tt>myNumber.toString([0-36])</tt> to output a number as a string
+	in
+	a certain base.
+	<br>
+	<br>
+	Can create numbers as objects but I shouldn't.
+	<tt>==</tt> does not distinguish between numbers and number-objects, but <tt>===</tt> does.
+	<h1>JS Number Methods</h1>
+	<h2>toString</h2>
+	<pre>
+	let x = 123;
+	x.toString();
+	(123).toString();
+	(100 + 23).toString();
+</pre>
+
+	<h2> toExponential </h2>
+	Like toString but gives scientific notation with <tt>e</tt> takes an argument for the number of decimals to include.
+	<h2>toFixed</h2>
+	Like to string but not scientific notation, takes parameter for number of digits.
+	<h2>valueOf </h2>
+	Gets value of object. JS uses it internally to get value of number objects.
+	<em> <b>all js objects have a <tt> valueOf() </tt> and <tt> toString() </tt> method</b>.</em>
+	<h2>Global Methods Relating to Numbers </h2>
+	<h3>Number() (a GLOBAL method)</h3>
+	Converts argument to number. Will return NAN for many things. Converts booleans to <tt>1</tt> or zero. Works on date
+	strings as well.
+	<h3>parseInt() (a GLOBAL method)</h3>
+	Finds first number in string passed. Must start with a numeric.
+	<h3>parseFloat() (a GLOBAL method)</h3>
+	Like parseInt but returns a floating point.
+	<h2> Number Class Properties</h2>
+	<tt>Number.[MAX_VALUE, MIN_VALUE, POSITIVE_INFINITY, NEGATIVE_INFINITY, NaN]</tt>
+	<h1> JS Arrays </h1>
+	<tt>array_name = [item1, item2, ...]</tt>
+	<br>
+	<br>
+	<tt>const array_name = [item1, item2, ...]</tt>
+	<br>
+	<br>
+	can do
+	<tt>const array_name = new Array(item1, item2, ...)</tt>
+	but it is not recommended.
+	<br>
+	<br>
+	zero indexed. Can replace values even when <tt>const</tt> is used. Will have to see more about <tt>const</tt> later.
+	<br>
+	<br>
+	Can be add to <tt>HTML</tt> will be delimited by commas.
+	JS variables can be objects. or functions. or other arrays.
+	<br>
+	<br>
+	Arrays have <tt>length</tt> <i>property</i> and <tt>sort</tt> <i>method</i>.
+	<br><br>
+	Can use the length in a <tt>for</tt> loop.
+	<br>
+	<br>
+	<hr>
+	here is something interesting. a <tt>forEach</tt> method for arrays that lets us apply a function.
+	<hr>
+	<pre>
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+
+let text = "&lt;ul&gt;";
+	fruits.forEach(myFunction);
+let text += "&lt;/ul&gt;";
+
+	function myFunction(value){
+
+	text += "&lt;li&gt;" + value + "&lt;/li&gt;";
+	}
+</pre>
+	<hr>
+	Note how in the above we do two interesting thing, use a variable in the parent scope, and use a funcction before it
+	is
+	defined. Both acceptable in JS!, apparently.
+
+	Can add array element. with <tt> length </tt> property or <tt>length</tt> method.
+	<i><b> can do a BAD thing and assign elements non-contiguously</b></i>
+	<br><br>
+	NO NAMES FOR ARRAY ELEMENTS: THAT IS FOR OBJECTS;
+	<br><br>
+	Never do the <tt> new Array();</tt> method because passing it with a single argument makes a new array with that
+	many
+	undefineed elements!
+	<h2>Recognizing arrays. </h2>
+	Because arrays's type is <tt>object</tt> we have to use;
+	<tt>Array.isArray(example_array);</tt> or <br> <tt> example_array instanceof Array;</tt> <br>
+	<tt>instanceof</tt> returns true whenever the variable was created by the specified constructor.
+	<h1> JS Array Methods </h1>
+	<tt>toString</tt>
+	<br><br>
+	<tt>join</tt> is like <tt>toString</tt> but it can take a sepearator.
+	<br><br>
+	<tt>pop</tt> pops off the end and returns that element.
+	<br><br>
+	<tt>push</tt> adds on to the end and returns the new length.
+	<br><br>
+	<tt>shift</tt> is like <tt>pop</tt> but it works on the first element.
+	<br><br>
+	<tt>unshift</tt> is like <tt>push</tt> but for the first element.
+	<br><br>
+	have already gone over <tt>length</tt> property and indexing.
+	<br><br>
+	<tt>delete</tt> leaves undesirable holes. use the above methods instead.
+	<br><br>
+	<tt>concat</tt> concatenates the array on to the end. can concatenate a string too.
+	<h2>Slicing and Splicing</h2>
+	<h3> Splice </h3>
+	<tt> example_array.splice(start_index, elements_to_removie, element_to_add, another_element_to_add, ...)</tt>
+	<br><br>
+	returns an array with the deleted item and modifies the original.
+	<br><br>
+	<h3>Slice</h3>
+	Slices starting at first index, up to but not including second index. Slices to end if no second index included.
+	<b>Does not </b> modify original array but returns a new array.
+	<tt>example_array.slice(1,3)</tt>
+
+	<br><br>
+	Sometimes <tt>example_array.toString()</tt> is implied.
+	<br><br>
+	<h1>JS Sorting Arrays </h1>
+	There is an <tt>example_array.sort()</tt> method. Modifies.<br><br>
+	There is an <tt>example_array.reverse()</tt> method. Modifies. <br><br>
+	<b><i> Oh No! sort sorts numerical arrays as strings! </i></b>
+	<br><br>
+	To deal with this we use a comparison function. Such as
+	<br><br>
+	<tt>num_array.sort(function(a, b){return a - b}) </tt>
+	<ul>
+		<li> If result is negative a comes before b </li>
+		<li> If result is positive b comes before a </li>
+	</ul>
+	<br><br>
+	use <tt>function(a,b){return 0.5 - Math.random()}</tt> to sort in random order.Not perfedct. Look up
+	<i>Fisher-Yates</i>
+	on the JS page method to get a truly random order.
+	<br><br>
+	Can find the max or min by sorting. But that is not efficient for a large array.
+	Instead do
+	<br><br>
+	<tt> Math.max.apply(null, array); </tt>.
+	But most efficient way is the home-made method they implement here.
+
+	<br><br>
+	Can have the function accesws object properties.
+	Can use &gt; and &lt; to compare strings for alphabetical order.
+
+	<h1>JS Array Iteration </h1>
+	Will have to check which of these modify the original array and which just return new arrays.
+	The <tt>forEach</tt> function from above.
+	<br><br>
+	<tt>map</tt> only changes the current array.
+	<br><br>
+	<tt>filter</tt> subjects the array to a test; use a function that returns a boolean.
+	<br><br>
+	<tt>reduce</tt> takes initial value (or the running sum), value (that is iterated over).
+	<br><br>
+	<tt>reduceRight</tt> goes the other-way.
+	<br><br>
+	<tt>every()</tt> takes a function that checks if every element passes the test.
+	<br><br>
+	There is also <tt>some</tt> wich returns true if any passes the test.
+	<br><br>
+	<tt>indexOf</tt> searches for the first ocurrence of an item an returns it.
+	Takes arguments <tt> item </tt> and optionally <tt>start</tt> the element to startt searching from.
+	<br><br>
+	<tt>lastIndexOf</tt> goes the other way.
+	<br><br>
+	<tt>find</tt> returns the first value the passes a test function.
+	<br><br>
+	<tt>find</tt> returns the index of the first value the passes a test function.
+	<br><br>
+	<tt>includes</tt> checks if the array includes an element, and can work with <tt>NaN</tt>
+	<h2> Now we check out some methods from the array class itself </h2>
+	<tt>Array.from()</tt> makes an array from anything with a length propery or any iterable object (willn probably
+	learn
+	more about what that is in the future.
+	<br><br>
+	<tt>Array.keys()</tt> gets iterator object of keys from array.
+	again more about what that is in the future.
+	<h1>JS Array Const </h1>
+	<tt>const</tt>
+	Defines a constant reference to an array.<br><br>
+	Must be assigned when declared.<br><br>
+	Have block scope.<b>This is different from variables declared with <tt>var</tt></b>
+	See more later scope of <b>let</b>.
+	<br><br>
+	<h1> JS Date Objects </h1>
+	Will come back to later.
+	<h1> JS Date Formats </h1>
+	Will come back to later.
+	<h1> JS Get Date Methods </h1>
+	Will come back to later.
+	<h1> JS Set Date Methods </h1>
+	Will come back to later.
+	<h1>JS Math Object</h1>
+	A 'general' class object. Has mathematical constants and functions.
+	<h1>JS Random</h1>
+	A 'general' class object. Has mathematical constants and functions.
+	Can make our own integer generators.
+	<h1>JS Booleans</h1>
+	<tt>Boolean()</tt> function evaluatest things for truthiness or falsiness.
+	Same thing as before where we can make an object but shouldn't.
+	Same distinction with <tt>==</tt> and <tt>===</tt> as before.
+	<h1>JS Comparisons</h1>
+	What I'd expect with the addition of <tt>===</tt> for type comparisons and weirdness with strings.
+	<p><tt>example_var = (conditoin) ? value1:value2</tt></p>
+	Convert to numbers before comparison.
+	<h1>JS If Else</h1>
+	What I'd expect.
+	<h1>JS Switch</h1>
+	What I'd expect.
+	<h1>JS For Loop</h1>
+	What I'd expect.
+	<tt> let </tt> protects variables outside the loop from changes to the looping variable if they have the same name.
+	<h1>JS For In Loop</h1>
+	<h2>for objects</h2>
+	<pre>
+	const person = {fname:"John", lname:"Doe", age:25};
+
+	let text = "";
+	for (let fieldname in person) {
+	  text += person[fieldname];
+	} 
+	</pre>
+	<br>
+	<h2>
+		for arrays
+	</h2>
+	<pre>
+	const numbers = [45, 4, 9, 16, 25];
+
+	let txt = "";
+	for (let x in numbers) {
+	// note that it actually uses the index
+	txt += numbers[x];
+	}
+	</pre>
+	<h2>array.forEach</h2>
+	Already covered.
+	<h1>JS For Of</h1>
+	<pre>
+	for (variable of iterable){
+	// code using 'variable`
+	}
+	</pre>
+	For example:
+	<pre>
+const cars = ["BMW", "Volvo", "Mini"];
+
+let text = "";
+for (let x of cars) {
+  text += x;
+}
+	</pre>
+	<pre>
+ let language = "JavaScript";
+
+let text = "";
+for (let x of language) {
+text += x;
+}
+	</pre>
+	<h1>JS While/Do While</h1>
+	About what I'd expect.
+	<h2>JS Break/Continue</h2>
+	<tt>break</tt> gets out of the loop, <tt>continue</tt> skips an iteration.
+	Can label code in js like:
+	<pre>
+	label:
+	statements
+	</pre>
+	Where statements can be in a block.
+	Then can go <tt> continue label;</tt> or <tt>break label;</tt>
+	Can additionally label loops.
+	<pre>
+	label1:
+for (i = 0; i < 10; i++) {
+  console.log(i);
+  label2:
+  if (i == 5) {   
+    ;
+  }
+}
+	</pre>
+	<h1>JS Iterables</h1>
+	Anything you can use a <tt> for..of</tt> on. Gets variables.
+
+	<h1>JS Sets</h1>
+	<pre>
+	const letters = new Set();
+	letters.add("a");
+	let b = "b";
+	letters.add(b)
+	</pre>
+	has a <tt> forEach()</tt> method.
+	has a <tt> values()</tt> that returns an iterable object.
+	<h1>JS Maps</h1>
+	Key value pairs create like
+	<pre>
+	const fruits = new Map([["apples", 500], ["noonooos", 33], ["greifu", 44]]);
+	</pre>
+	then <tt> fruits.set("mangosteeeen", 334455)</tt> <br>
+	likewise there is a <tt>get</tt> method that gets the value based on key. key can be any type.<br>
+	also there is a <tt>size</tt> method. a <tt>has</tt> method. d <tt>delete</tt> method.
+	Here is a table with minutae that I can cover later.
+	<table>
+		<tbody>
+			<tr>
+				<th></th>
+				<th>Object</th>
+				<th>Map</th>
+			</tr>
+			<tr>
+				<th>Iterable</th>
+				<td>Not directly iterable</td>
+				<td>Directly iterable</td>
+			</tr>
+			<tr>
+				<th>Size</th>
+				<td>Do not have a size property</td>
+				<td>Have a size property</td>
+			</tr>
+			<tr>
+				<th>Key Types</th>
+				<td>Keys must be Strings (or Symbols)</td>
+				<td>Keys can be any datatype</td>
+			</tr>
+			<tr>
+				<th>Key Order</th>
+				<td>Keys are not well ordered</td>
+				<td>Keys are ordered by insertion</td>
+			</tr>
+			<tr>
+				<th>Defaults</th>
+				<td>Have default keys</td>
+				<td>Do not have default keys</td>
+			</tr>
+		</tbody>
+	</table>
+	<h1> JS Typeof </h1>
+	There is <tt>string</tt>, <tt>number</tt>, <tt>boolean</tt>, <tt>object</tt>, <tt>function</tt>.<br>
+	Object tyepes (some of which shouldn't be used) <tt>Object</tt>, <tt>Date</tt>, <tt>Array</tt>, <tt>String</tt>,
+	<tt>Number</tt>, <tt>Boolean</tt>. <br>
+	Also <tt>null</tt> and <tt>undefined</tt>.
+	Typeof has some limitations.<br>
+	NaN is a number. null is an object. A lot to unpack here. Will have to reference this if necessary.<br>
+	There is isArray and isDate function.<br>
+
+	There is a .constructor method.<br>
+	All sorts of type mess.
+	<h1> JS Type Conversions </h1>
+	Can review later.
+	<tt>Number("3.14")</tt>: empty string or just spaces return zero. Other things <tt>NaN</tt>. Mess with operations
+	like <tt>+</tt>.<br>
+	<tt>String(number)</tt> or the <tt>x.toString()</tt> method. See number methods from before. A whole string
+	conversion mess.
+	<h1>JS Bitwise</h1>
+	Works on 32 bits rather than 64 so. First bit is the minus sign so <tt>~</tt> operator returns a negative number.
+	<tt>&</tt> is bw and. <tt>|</tt> is bitwise or. <tt>^</tt> is bw xor.
+	<pre>
+	5 << 1; //zero fill left shift: preserves sign; seems to work as expected.
+	5 >> 1; //signed right shift: preserve sign but negatives are strange
+	5 >>> 1; // zero fill right shift; can take a negative number and make it a huge positive number; fills in from the left with zeros
+	To investigate more later.
+	</pre>
+	<h1>JS Regex</h1>
+	<tt>/pattern/modifieers;</tt>
+	<br><br>
+	<tt> searcn() </tt> searches for a match. Can use astring. Gives index of first match.
+	<br><br>
+	<tt> replace()</tt> replaces what we might find.
+	<br><br>
+	<pre>
+let text = "Visit W3Schools";
+let n = text.search(/w3schools/i); // i means case insensitive
+	</pre>
+	<br><br>
+	modifiers include i, insensitive, g, global(don't stop after first match), m, multiline
+	<br><br>
+	[abc]
+	<br><br>
+	[0-9]
+	<br><br>
+	(firstalternative|secondalternative)
+	<br><br>
+	\d find a digit
+	<br><br>
+	\s find a whitespace character
+	<br><br>
+	\b matches boundaries of words.
+	<br><br>
+	\uxxxx find unicode character with hexadecimal number xxxx
+	<br><br>
+	+ at least one
+	<br><br>
+	* zero or more occurrences
+	<br><br>
+	? zero or one occurrence
+	<b>Will have to practice
+	</b> <br>
+	has a <tt>[regexobject or variable].test(string)</tt> method returns boolean
+	<br><br>
+	has a <tt>[regexobject or variable].exec(string)</tt> method returns the found string as an object. <b>will have to
+		test with global.
+		<br><br>
+	</b>
+	<h1> JS Try Catch </h1>
+	<pre>
+	try{
+	//code to try
+	} catch(err){
+	// code in case of failure
+	} finally {// this code gets run either way.
+	}
+	</pre>
+	JS does a throw. You can too. <tt>throw "too big</tt> for example.
+	<h2> the error object </h2>
+	has <tt> name </tt> and <tt> message </tt>
+	There are six different error names (can reference later). can get in catch statement with <tt>err.name</tt>.
+	<h1>JS Scope</h1>
+	<h2>Block Scope</h2>
+	variables declared with <tt>let</tt> are isolated to their blocks. with <tt>var</tt> you can use them outside the
+	blocks.
+	<h2>Local Scope</h2>
+	Variables created in a function only exist in the function.
+	Function arguments are local variables inside functions.
+	<h2>Function Scope</h2>
+	See local scope.
+	<h2>Global Scope</h2>
+	Things declared in scopes outside another scope are visible in that other scope.
+	<h2> Relation to HTML </h2>
+	<pre>
+	var lala = "haha" // can use window.lala
+	let hehe = "hoho" // can't use window.hehe
+	</pre>
+	<h1>JS Hoisting </h1>
+	JS hoists declarations to the top. <br>
+	With <tt>let</tt> and <tt>const</tt> the are hoisted but not initialized. Maybe declared with <tt>var</tt> too.
+	<h1> JS Strict Mode </h1>
+	<tt>"use strict";</tt><br>
+	Can have function scope. <br><br>
+	Protects against mistakes. <br><br>
+	Must declare a variable before using it.<br><br>
+	Can't delete variable or function. <br><br>
+	Can't duplicate function parameter names<br><br>
+	No octal numeric literals or octal escape characters.<br><br>
+	Can't write to a read only property or get-only property<br>
+	The example they give is
+	<pre>
+ "use strict";
+const obj = {};
+Object.defineProperty(obj, "x", {value:0, writable:false});
+
+obj.x = 3.14;            // This will cause an error 
+	</pre>
+	Will have to learn more about the <tt>defineProperty</tt> function.
+	<br><br>
+
+	Can't write to a get-only propety. Abain the example doesn't make sense and will have to learn more about it:
+	<pre>
+ "use strict";
+const obj = {get x() {return 0} };
+
+obj.x = 3.14;            // This will cause an error 
+	</pre><br><br>
+
+	Further restrictions on deletions; can't delete an undeletable property.<br><br>
+	The words <tt>eval</tt>, <tt>arguments</tt> can't be used as a variable.<br><br>
+	The <tt>with</tt> statement is not allowed (will have to learn about it (it seems to let us specify a particular
+	libray in advance without having to type it out each time)).<br><br>
+
+
+	eval can't create variables the scope where it is called.<br><br>
+
+	Restrictions on <tt>this</tt> keyword.
+	When object is not specified <tt>this</tt> will return <tt>undefined</tt> in
+	strict mode and the global object (the main window) in normal mode. Perhaps the object is not specifiec when the
+	function that uses the <tt>this</tt> keyword is not an object method.
+
+	<h1>JS This </h1>
+	Can be used inside of objects.
+	<h2> In a Method </h2>
+	<pre>
+const person = {
+  firstName: "John",
+  lastName : "Doe",
+  id       : 5566,
+  fullName : function() {
+    return this.firstName + " " + this.lastName;
+  }
+};
+The owner of the function is the object.
+	</pre>
+	<h2> Just by itsef </h2>
+	<tt>let x = this; </tt>
+	refers to the global object. can be used in strict mode.
+	<h2>in a Function</h2>
+	can't use in strict.<br>
+	but in non-strit it refers to the owner of the function; the object window.
+	<h2>in HTML event handlers (which I will learn more about)</h2>
+	refers to the <tt>HTML</tt> element that received the event.
+
+	<h2> relevant when dealing with <tt>call </tt> and <tt> apply </tt></h2>
+
+	<h1>JS Arrow Function </h1>
+	Example:
+	<pre>
+	let myFunction = (a, b) =&gt; a * b;
+	</pre>
+	Basic function:
+	<pre>
+	hello = function() {
+		return "hello World!";
+	}
+	</pre>
+
+	Basic arrow function:
+
+	<pre>
+	hello = () =&gt; {
+		return "hello World!";
+	}
+	</pre>
+	If just one statement can get rid of brackets and <tt>return</tt> statement.
+	<pre>
+	hello = () =&gt; "hello World!";
+	</pre>
+	Can pass parameters inside parentheses:
+	<pre>
+	hello = (val) =&gt; "hello " + val;
+	</pre>
+	Can omit parentheses if only have one parameter.
+	<pre>
+	hello = val =&gt; "hello " + val;
+	</pre>
+	<tt>this</tt> always refers to the object that defined the arrow function. In a regular function it represents the
+	calling environment. <b>Will have to experiment and see how this works with objects and methods. </b>.
+	<h1>JS Classes</h1>
+	<pre>
+	class Car {
+	 onstructor(name, year) {
+		this.name = name;
+		this.year = year;
+		}
+	}
+	</pre>
+	Constructors must: be named <tt>constructor</tt> <br><br>
+	Executed automatically when a new object is created.<br>
+	Is used to initialize other objects.<br>
+	Can add other methods. Can take parameters.
+	<h1>JS JSON </h1>
+	Text format similar to JS object declaration.
+	<pre>
+	{"country":"usa", 
+	"capital":"wershingtondc", 
+	"example_states":[
+	{"name:"utah", "capital":provo},{"name":"ohio","capital":"columbus"}]}
+	</pre>
+	Use <tt>JSON.parse(example_json_text)</tt> to read in JSON from text.
+	<h1>JS Debuggers</h1>
+	There are built-in debuggers in web browsers. Usually <tt>F12</tt> will open it. Use <tt>console.log()</tt> to
+	output to browser' console. <br><br>
+	Can set breakpoints in the code. or use the <tt>debugger;</tt> statement.
+	<h1>JS Style Guide </h1>
+	Read but can use a formatter.
+	<h1>JS Best Practices</h1>
+	Declare objects with <tt>const</tt> to prevent change of type.<br>
+	Declare arrays with <tt>const</tt> to prevent change of type.<br>
+	Don't use <tt>new Object()</tt>.<br>
+	Be aware of numbers being converted to strings and <tt>NaN</tt>.
+	Substracting strings generates <tt>NaN</tt>.
+	<tt>===</tt> forces comparison of values and type whereas <tt>==</tt> converts to matching type before comparison.
+	Give parameter defaults like <tt>function haha(a=1, b=2){}</tt> can use and <tt>if x === undefined</tt> statment for
+	versions before <tt>ES16</tt>.
+	Dont' use <tt>eval</tt>
+	<h1>Common JS Mistakes</h1>
+	Assignment returns the value of an assignment so make sure you are always using <tt>==</tt> or <tt>===</tt> to
+	compare.<br>
+	Remember that switch statements use strict comparison.<br>
+	Be careful about difference between addition and concatenation.<br>
+	difficulties with floating points:<br>
+	<pre>
+let x = 0.1;
+let y = 0.2;
+let z = x + y            // the result in z will not be 0.3 
+let z = (x * 10 + y * 10) / 10;       // z will be 0.3 
+	</pre> <br>
+	Can break a statment into two lines but best not to do that in the middle of a string literal.<br><br>
+	Make sure that you dont' misplace a semi-colon.<br>
+	Semicolons aren't necessary but are good practice.<br>
+	Don't break a return statement.<br>
+	Arrays have indexes, objects have names.<br>
+	Beware trailing commas.<br>
+	Test if something is undefined:
+	<pre>if (typeof(myObj) === "undefined")</pre>
+	But this is might throw an error
+	<pre style="color:red">if typeof(myObj === null)</pre>
+	So a better way to do it is:
+	<pre style="color:green">if(myObj !== "undefined" && myObj !== null</pre>
+	<h1>JS Performance </h1>
+	<h2>Make sure every iteration of a loop is efficient including in the declaration.</h2>
+	<pre style="color:red">for(let i= 0; i  &lt; arr.length; i++)
+	</pre>
+	<pre style="color:green">let l =arr.length;
+	for (let i=0; &lt; l; i++)
+	</pre>
+	<h2>Reduce DOM Access</h2>
+
+	<tt>
+		cost obj = document.getElementById("demo")
+		obj.innerHTML = "Hello";
+	</tt>
+	See how we stored it as a variable?
+	Good idea to keep DOM small.
+	Avoid unnecessary variables to reduce storage.
+	Put script at end, use <tt>defer="true"</tt> for external scripts.
+	Or can programatically do:
+	<pre>
+	&lt;script&gt;
+window.onload = function() {
+  const element = document.createElement("script");
+  element.src = "myScript.js";
+  document.body.appendChild(element);
+};
+&lt;script&gt; 
+	</pre>
+
+</body>
+
+</html>

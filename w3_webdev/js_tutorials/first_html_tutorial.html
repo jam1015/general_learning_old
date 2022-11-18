@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<met charset="UTF-8" />
+	<title>Jordan's Demo Website</title>
+	<link rel="icon" type="image/x-icon" href="../images/watermelon_favicon/favicon.ico">
+	<style>
+		pre {
+			background-color: #f9ebf9;
+		}
+
+		tt {
+			background-color: #f9ebf9;
+		}
+
+		code {
+			background-color: #f9ebf9;
+		}
+	</style>
+</head>
+
+
+<body>
+	<a href="../index.html" alt="link to index">go back to index</a>
+	<hr>
+	<h1 id="js_redirect">This is the static html tutorial. For a tutorial involving <TT>Javascript</TT> see
+		<a href="../js_tutorials/js_tutorials.html">
+			the javascript tutorial page.
+		</a>
+		This heading has <tt>id="js_redirect"</tt>
+	</h1>
+	<hr>
+	<h1> Front matter (basic html facts I already knew) </h1>
+
+	<hr>
+	<h1>Headings</h1>
+	<h2 style="text-align:right">uses <tt>&lt;style="text-align-right&gt;"</tt></h2>
+	<hr>
+	<h3 style="font-size:28px">uses <tt>&lt;style="font-size:55px"&gt;</tt></h3>
+	<hr>
+
+	<h1>Paragraphs</h1>
+	<p title="here is some mouseover text"> use the title property in a paragraph to get some mouseover text.</p>
+
+	<img src=".././images/Rabban_Gamliel.jpg" , alt="famous rabbi" , title="hadrian was bad for the jews" , width="100"
+		, height="100">
+	<hr>
+
+
+	<h1>Styles (basic CSS)</h1>
+	<p style="background-color:#700300;color:peru;font:Menlo;font-size:150%;">
+		Uses the convention <tt>&lt;tagname style="propterty:value;property:value;"&gt;</tt>. This usese the
+		<tt>color</tt> and <tt>background-color</tt> proprties.
+	</p>
+
+	<hr>
+	<h1>Formatting</h1>
+	These tags are like styles.
+
+	<p><b>b tag for bold</b></p>
+	<p><strong>strong tag also for bold apparently</strong></p>
+	<p><i>i tag for italic</i></p>
+	<p><mark>mark tag for highlighting</mark></p>
+	<p><em>em tag also for italics apparently</em></p>
+	<p><small>small tag for small letters</small></p>
+	<p><del>Text property</del></p>
+	<p><ins>ins for underlined</ins></p>
+	<p><sup>sup for superscript</sup>normal text<sub> sub for subscript</sub></p>
+
+	<hr>
+	<h1>Quotations</h1>
+	<blockquote cite="https://en.wikipedia.org/wiki/Main_Page">
+		Wikipedia is a free encyclopedia. This is a <tt>&lt;blockquote&gt;</tt> tag. Use the <tt>cite</tt> attribute
+		to include
+		a citation somewhere possibly? Using it here and seeing nothing.
+	</blockquote>
+
+	The featured article of today, 2021-12-17 is says that <q>Summative research conducted over the years, including
+		two
+		landmark evaluations in 1970 and 1971, demonstrated that viewing the program had positive effects on young
+		viewers' learning, school readiness, and social skills.</q>
+	<br>
+	<mark>
+		That was not literal quotation marks, it was a
+		<tt>&lt;q&gt;</tt> tag.
+	</mark>
+
+	<p>
+		<abbr title="Children's Television Workshop">CTW</abbr> was the organization that oversaw the production of
+		Sesame Street.
+		<br>
+		<mark>That was an <tt>&lt;abbr&gt;</tt> tag with a <tt>title</tt> attribute.</mark>
+	</p>
+
+	<p>
+		<br>
+		<br>
+		<mark>here is an <tt>&lt;address&gt;</tt> tag</mark>
+	<address>
+		address tag uses br tags to greak lines <br>
+		Jordan Mandel <br>
+		5854 Forbes Ave, Apt 12 <br>
+		Pittsburgh, PA 15217 <br>
+	</address>
+	</p>
+
+	<p> Here we have a <tt>q</tt> tag with a <tt>cite</tt> tag. <q>A wizard is never late and never early.</q><cite>
+			The
+			hobbit by JRR Tolkein.</cite></p>
+
+	<p><bdo dir="rtl">This is a <tt>bdo</tt> tag with <tt>dir="rtl"</tt>. stands for <q>bi directional override</q>bdo>
+	</p>
+
+	<hr>
+	<h1>Comments</h1>
+	<p>
+		written like <tt>
+			&lt;!--- ---&gt;
+		</tt>
+	</p>
+
+	<hr>
+	<h1>HTML Colors</h1>
+	<p>There are color names. for the <tt style="color:DodgerBlue">&lt;tt style="color:DodgerBlue"&gt;</tt> and <tt
+			style="background-color:MediumOrchid">&lt;tt style="background-color:MediumOrchid"&gt;</tt> style properties
+		which as a
+		reminder are stored in the style attribute with semicolons and colons.</p>
+	<p style="border:10px dashed DarkSlateBlue">color border of this paragraph specified with <tt>&lt;p
+			style="border:10px
+			dashed DarkSlateBlue"&gt;</tt></p>
+	<p>Can specify color values with names like above, hex-values: <tt>#ff34bb</tt>, or <tt>rgb</tt>, <tt>rgba</tt>,
+		<tt>hsl</tt>, or <tt>hsla</tt> values.
+	</p>
+
+	<tt>RGB</tt> goes from 0-255, <tt>a</tt> goes from 0-1. hsl is <tt>angle, percentage, percentage</tt> for example we
+	can
+	go <tt>hsla(9, 100%, 65%, .5)</tt>.
+
+	<hr>
+
+	<h1>HTML CSS</h1>
+	<p> Inline uses the style element of an element. Internal is in the head tag. External is in an external css file.
+	</p>
+	<h2>Inline</h2>
+	<p>Already used above like <tt>&lt;tagname style="color:blue;&gt;"</tt></p>
+	<h2>Internal</h2>
+	In a <tt>style</tt> tag in the header like:
+	<pre>
+		tag_type {style_key: style_value;}
+	</pre>
+	<br>
+	for example:
+	<pre>
+		h1 {color: blue;}
+	</pre>
+
+	<h2>External</h2>
+	In a <tt>link</tt> tag in the header like:
+	<pre>
+		&lt;link rel="stylesheet" href="styles.css"&gt;
+	</pre>
+
+	in that sytlesheet put something of the same format as above:
+	<pre>
+		tag_type {style_key: style_value}
+	</pre>
+
+	for example:
+	<pre>
+		body {
+		  background-color: powderblue;
+		}
+		h1 {
+		  color: blue;
+		}
+		p {
+		  color: red;
+		}
+	</pre>
+
+	<h1>HTML Links</h1>
+	<a href="http://info.cern.ch" title="an example of a link">the first website</a>
+	<br>
+	<tt>attribute</tt> which can be specifies
+	<br>
+	<tt>_self</tt><a href="http://info.cern.ch" target="_self">the first website</a>
+	<br>
+	<tt>_blank</tt><a href="http://info.cern.ch" target="_blank">the first website</a>
+	<br>
+	<tt>_parent</tt><a href="http://info.cern.ch" target="_parent">the first website</a>
+	<br>
+	<tt>_top</tt> <a href="http://info.cern.ch" target="_top">the first website</a>
+	<br>
+	Will have to learn more about the distinctions here.
+	<br>
+	For other websites we use absolute <tt>URLS</tt> but for links in the project we can use regular URLs.
+
+	Can put an img inside a link.
+	<a href="http://info.cern.ch" target="_parent">
+		<img title="using an image as a link" src="../images/Rabban_Gamliel.jpg" alt="the rabbi Gamliel"
+			style="width:42px;height:42px"></img>
+	</a>
+	<br>
+	Can also link to an <a href="mailto:jordan.mandel@live.com">email address</a>. using
+	<tt>href="mailto:jordan.mandel@live.com"</tt>
+	<br>
+	Can use a button as a link. Involves <tt>Javasscript</tt> will have to learn more about this later.
+	<button onclick="document.location='http://info.cern.ch'">using a button to access the first website</button>.
+
+	<h2> link colors </h2>
+	Can change these properties using CSS. Will neglect to learn in detail now.
+	<h2 id="bookmark_explanation">bookmarks</h2>
+	<a href="#js_redirect">can link to an <tt>id</tt> of a different tag such as&lt;href=#js_redirect&gt;
+	</a>
+	<h1>HTML Images</h1>
+	<tt>src</tt> which is the path to the imate; and <tt>alt</tt> which is alternate text for the image.
+	can specify width and height with <br> <tt>width="400", height="300"</tt> or <br>
+	<tt>style="width:500px;height:600px;"</tt>
+	<br>
+	<img src="../images/hillel.jpg" alt="rabbi Hillel, standing on one foot" style="width:50px;height:60px;">
+	<br>
+	<img src="../images/hillel.jpg" alt="rabbi Hillel, standing on one foot" width="40" , height="30">
+	better to use the style attribute; to prevent overrides from CSS. <br>
+	can include images on other servers by usin URL. <br>
+	can use <tt>style="float:left;"</tt>
+	<img src="../images/hillel.jpg" alt="rabbi Hillel, standing on one foot" width="40" height="30"
+		style="float:right;">
+
+	<h1>HTML Favicon</h1>
+	syntax for including favicon, which is the image up on the tab, is
+	<tt>&lt;link rel="icon" type="image/x-icon" href="path/to/file.ico"&gt;</tt> and it has to go in the header.
+	acceptable on modern browsers are: <tt>ICO</tt>, <tt>PNG</tt>, <tt>GIF</tt>, <tt>JPEG</tt>, <tt>SVG</tt>
+
+	<h1>HTML Tables</h1>
+	There is <tt>&lt;th&gt;</tt> for table headers, <tt>&lt;tr&gt;</tt> for table rows <tt>&lt;td&gt;</tt> for table
+	columns.
+
+	<table>
+		<tr>
+			<th>Company</th>
+			<th>Contact</th>
+			<th>Country</th>
+		</tr>
+		<tr>
+			<td>Alfreds Futterkiste</td>
+			<td>Maria Anders</td>
+			<td>Germany</td>
+		</tr>
+		<tr>
+			<td>Centro comercial Moctezuma</td>
+			<td>Francisco Chang</td>
+			<td>Mexico</td>
+		</tr>
+	</table>
+	Can style tables with CSS. best not to do inline. see tutorial. <br><br>
+	Can style tables row width and heigh. can do in-line. see tutorial <br><br>
+	Headers can go in rows or columns. Can go in multiple columns by using colspan attribte.<br><br>
+	<h1>HTML Lists</h1>
+	Can take attributes <tt>style="list-style-type:disc;"</tt> but available options besides disc are:
+	<ul>
+		<li><tt>circle</tt></li>
+		<li><tt>square</tt></li>
+		<li><tt>none</tt></li>
+	</ul>
+
+	<ul>
+		<li>&lt;ul&gt;tag for unordered list</li>
+		<li>&lt;li&gt; tag for a list item.</li>
+	</ul>
+
+	<ol>
+		<li><tt>&lt;ol&gt;</tt> tag for unordered list</li>
+		<li>still <tt>&lt;li&gt;</tt> tag for a list item.</li>
+	</ol>
+	<dl>
+		<dt><tt>&lt;dt&gt; tag for description item</tt></dt>
+		<dd><tt>&lt;dd&gt; tag for description item</tt></dd>
+		<dt>Sparrow</dt>
+		<dd>a common bird</dd>
+
+	</dl>
+	Can nest lists.
+	<a href="./example_navbar.html">example_navbar</a>
+
+	<h1>HTML Block and Inline Elements </h1>
+	Block elements; starts on new line, takes up full width, has top and bottom margin, includes div.<br>
+	Inline elements are don't start on a new line, only takes necessary width.<br>
+	Example of block level element is <tt>&lt;div&gt;</tt>, example of inline element is <tt>&lt;span&gt;</tt>
+	<h1>HTML Class Attribute</h1>
+	to make a class:
+	<pre>
+	//note the dot in the reference to the class.
+	&lt;style&gt;
+	.city{
+	color: white;
+	border: 2 px solid black;
+	}
+	&lt;/style&gt;
+&lt;div class="city"&gt;
+London
+&lt;/div&gt;
+	</pre>
+	Useful with <tt>div</tt> and <tt>span</tt>. <br>
+	HTML elements can have multiple classes; can separate them by a space.<br>
+	In JS can go:
+
+	<pre>
+	var x = document.getElementsByClassName("city"); //returned in vectors which we can access and get attributes of, can probably learn more about this in the HTML DOM section.
+	</pre>
+	Looks like it returns as an array.
+	<h1>HTML ID Attribute</h1>
+	Each <tt>ID</tt> is unique to each element. Can't start with a number.<br>
+	In a style tag to style and id we go
+	<pre>
+	#example_id {
+padding: 40px;
+text-align: center;
+	}
+	</pre>
+	Bookmarks <a href="#bookmark_explanation">(see above)</a> use ids; refer to it with a hash..
+	Bookmarks <a href="../js_tutorials/js_tutorials.html#random_id">(this goes to the js page)</a> can also be made by
+	prepending a file path; a link to a page, then follow a book mark; just append the <tt>#bookmark</tt> corresponding
+	to the file tag.
+	<h2> can use in js</h2>
+	<tt>document.getelementById("example_id")</tt><br>
+	Then can access properties with a dot.<br>
+	<h1>HTML Iframe</h1>
+	Show web page within a web page.
+	<pre>
+ &lt;iframe src="url" title="description" height="200", width="333"&gt;&lt;/iframe&gt;
+
+ &lt;iframe src="url" name="heres_a_name" title="description" style="height:200px;width:333px;"&gt;&lt;/iframe&gt;
+	</pre>
+	other style options include
+	<pre>
+	style="border:none;"
+	style="border: 2px solid red;"
+	</pre>
+	can be target for a link using name attribute;
+	<pre>
+&lt;a href="./path/to/page" target="heres_a_name" &gt;
+</pre>
+	<h1> HTML Javascript </h1>
+	remember <tt>document.getElementById()</tt> </br>
+	some available things you can then access are<br>
+	<tt>style.fontSize</tt><br>
+	<tt>style.color</tt><br>
+	<tt>style.backgroundColor</tt><br>
+	<tt>.src</tt><br> like where an image comes from
+	<br>
+	<h1> HTML &lt;noscript&gt; Tag </h1>
+
+
+	<p><code>&lt;noscript&gt; message here if they've disabled js/scripts or browser doesn't support &lt;/noscript&gt;</code>
+	</p>
+
+	<h1>HTML Filepaths</h1>
+	<ul>
+		<li>absolute is path to file</li>
+		<li><code>/</code> might have different meaning than with what we’re doing.</li>
+		<li>absolute file path might be “https://nick.com/images/football_head.jpg”</li>
+		<li>might use in <code>src</code> for images or <code>href</code> for links</li>
+	</ul>
+	<h1> HTML Head Element </h1>
+	Comes before&lt;body&gt; tag. Has metadata like
+	<ul>
+		<li>document title</li>
+		<li>character set</li>
+		<li>styles</li>
+		<li>scripts</li>
+		<li>etc</li>
+	</ul>
+	Can contain the following items.
+	<h2 id="title"><code>&lt;title&gt;</code></h2>
+	<p>A required element.</p>
+	<p>Important for SEO</p>
+
+	<h2 id="the-style-tag">The <code>&lt;style&gt;</code> tag</h2>
+	<p>Put document-wide CSS here</p>
+	<h2 id="the-link-tag">the <code>&lt;link&gt;</code> Tag</h2>
+	Example:
+	<p><code>&lt;link rel="stylesheet" href="mystyle.css"&gt;</code></p>
+
+	<h2 id="html-meta-element">HTML <code>&lt;meta&gt;</code> element</h2>
+	<p>Can do character set, page description, keyworkds, author, viewport settings.<br />
+		Can do <code>name="name of something", content="the content like a description, keywords, or the author"</code>
+	</p>
+	Or can do something cool:
+	<pre><code>&lt;meta http-equiv=&quot;refresh&quot; content=&quot;30&quot;&gt; //makes the page refresh every thirty seconds</code></pre>
+	<p>Or can do something cool</p>
+	<pre><code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&gt; //makes it look good on all devices</code></pre>
+	<ul>
+		<li>I should includ the above in all my webpages</li>
+		<li>the device width makes the page as wide as the device</li>
+		<li>the initial scale sets the initial zoom level</li>
+	</ul>
+
+	<h2 id="script-element"><code>&lt;script&gt;</code> Element</h2>
+	<p>puts a script in the header, I’ve learned about this before</p>
+	<h2 id="base-element"><code>&lt;base&gt;</code> Element</h2>
+	<p>The base URL or what relative paths are relative to. like:</p>
+	<pre><code>&lt;base href=&quot;https://www.w3schools.com/&quot; target=&quot;_blank&quot;&gt;</code></pre>
+	Will have to learn more about this later
+
+	<h1> HTML Layout </h1>
+	<ul>
+		<li><code>&lt;header&gt;</code>: header section: different than head</li>
+		<li><code>&lt;nav&gt;</code>: navbar</li>
+		<li><code>&lt;section&gt;</code>: a main sction</li>
+		<li><code>&lt;article&gt;</code>: independent, self-contained</li>
+		<li><code>&lt;aside&gt;</code>: content set-aside, like a sidebar</li>
+		<li><code>&lt;footer&gt;</code>: a footer section of a document</li>
+		<li><code>&lt;details&gt;</code>: details that user can open and close</li>
+		<li><code>&lt;summary&gt;</code>: heading for details</li>
+	</ul>
+	<h2> CSS Framework </h2>
+	Used to create layouts quicklty.
+	<h2>CSS Float Layout</h2>
+	Made using the CSS <tt>float</tt> property. Will learn later.
+	<h2>CSS Flexbox Layout</h2>
+	Seems better than float, will learn later.
+	<h2>CSS Grid Layout</h2>
+	Also will learn about later.
+	<h1>HTML Responsive Web Design</h1>
+	To make the page responsive in width (should always include): <br>
+	<pre><code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&gt; //makes it look good on all devices</code></pre>
+	<br>
+	Can also go:<br>
+	<p><code>&lt;img src="example_image.jpg" style="width-100%"&gt;</code></p>
+	Or a better solution might be to go: <br>
+	<p><code>&lt;img src="example_image.jpg" style="max-width:100%;height:auto;"&gt;</code></p>
+	Can set different images based on the width of the browser window: <br>
+
+	<pre><code> &lt;picture&gt;
+  &lt;source srcset=&quot;img_smallflower.jpg&quot; media=&quot;(max-width: 600px)&quot;&gt;
+  &lt;source srcset=&quot;img_flowers.jpg&quot; media=&quot;(max-width: 1500px)&quot;&gt;
+  &lt;source srcset=&quot;flowers.jpg&quot;&gt;
+  &lt;img src=&quot;img_smallflower.jpg&quot; alt=&quot;Flowers&quot;&gt;
+&lt;/picture&gt; </code></pre>
+	<br><br>
+	With the tag
+	<h4 style="font-size:1vw">
+		<p><code>
+			&lt;h4 style="font-size:0.1vw"&gt;Hello World&lt;/h4&gt;
+			</code>
+		</p>
+	</h4>
+	the font size will scale with the browser window.
+	<h2>Media Queries</h2>
+	Look up how big the screen is:
+	Copied verbatim from w3: <br>
+
+	<pre><code> &lt;style&gt;
+.left, .right {
+      float: left;
+        width: 20%; /* The width is 20%, by default */
+}
+
+        .main {
+              float: left;
+                width: 60%; /* The width is 60%, by default */
+        }
+
+        /* Use a media query to add a breakpoint at 800px: */
+        @media screen and (max-width: 800px) {
+              .left, .main, .right {
+                      width: 100%; /* The width is 100%, when the viewport is 800px or smaller */
+                        }
+        }
+ &lt;/style&gt; </code></pre>
+	<b>Then they give a full example of a responsive webpage. Worth coming back to.</b>
+	<h2>W3.CSS</h2>
+	bootstrap is allegedly better.
+	<h2>bootstrap.CSS</h2>
+	This is what I'll actually learn.
+	<h1> HTML Computer Code </h1>
+	<kbd>&lt;kbd&gt; tag</kbd> for keyboard input.<br>
+	<pre><code>`&lt;samp&gt; for a sample of a computer program`</code></pre>
+	<p><code>&lt;code&gt; for a piece of computer code</code></p> does not preserve excess white space and line breaks.
+	&lt;pre&gt; can be used to preserve that formatting.
+	<tt>&lt;var&gt; for computer variables</tt>
+	<h1>HTML Semantic Elements</h1>
+	The name of the tag describes the contents while the action of the tag formats it appropriately.
+	<ul>
+		<li><code>&lt;section&gt;</code> tag. thematic grouping. this and others might not actually change the
+			formatting too much: that is up to us with <tt>CSS</tt>
+			<ul>
+				<li><code>&lt;article&gt;</code> tag. should be self contained. gives example of some CSS one might use.
+				</li>
+			</ul>
+		</li>
+		<li>These <code>&lt;article&gt;</code> and <code>&lt;section&gt;</code> can be nested within one another either
+			way.</li>
+		<li><code>&lt;header&gt;</code> might containe an icon, header tags, authoship.Typically at beginning but cant
+			be used other places.</li>
+		<li><code>&lt;footer&gt;</code> goes down at the bottom. general bottom matter.</li>
+		<li><code>&lt;nav&gt;</code> a collection of links. maybe for asite map</li>
+		<li><code>&lt;aside&gt;</code> aside info. again we have to style all of this with CSS and there are examples on
+			the website.
+			<ul>
+				<li><code>&lt;figure&gt;</code> and <code>&lt;figcaption&gt;</code>. <code>&lt;figure&gt;</code>
+					includes an <code>&lt;img&gt;</code> tag.</li>
+			</ul>
+		</li>
+		<li>alsot <tt>time</tt> and </mark> tags. refer back for reference.</li>
+	</ul>
+	<h1>HTML Style</h1>
+	A lot of this I can see is the right way to do things by example.
+	<ul>
+		<li>Specify alt text and width and height <code>alt="HTML5" style="width:128px;height:128px"&gt;</code> for
+			images.</li>
+		<li>They reocmmend against indentation with tabs.</li>
+		<li>Always use the title element.;</li>
+		<li>Closing slash for some elements.</li>
+		<li>Lang attribute.</li>
+		<li>Use charset.</li>
+		<li>declare doctype</li>
+		<li>Set the viewport.</li>
+	</ul>
+	<h1>HTML Entities</h1>
+	Syntax is <tt>&entity_name;</tt> or <tt>&#entity_number;</tt><br>
+	<p>Useful include <code>&amp;nbsp;</code></p>
+	<p>Also <code>&amp;#8209;</code> non-breaking hyphen</p>
+	Can look at the list. Includes letters with diacritics.
+	Other symbols available as well.
+	<h1>Emojis Specifcally</h1>
+	Emojis are part of <tt>UTF-8</tt>
+	Recall </tt>&lt;meta charset="UTF-8"&gt;</tt>
+	Look up it's endity number; those are <tt>UTF-8</tt> numbers.
+	<h1>HTML Charset </h1>
+	Details <tt>ASCII</tt>, <tt>ISO-8859-1</tt>, <tt>ANSI</tt> and <tt>UTF-8</tt> charsets.
+	<h1>HTML URL Encode</h1>
+	Can be a name or an IP address.
+	Follows form:
+	<pre><code>`scheme://prefix.domain:port/path/filename`</code></pre>
+	<ul>
+		<li><code>scheme</code> can be <code>http</code> or <code>https</code> but maybe <code>ssh</code> ,
+			<tt>sftp</tt>and similar
+			things are available
+		</li>
+		<li><code>prefix</code> is usually <code>www</code></li>
+		<li><code>domain</code> is something like <code>toucansam.com</code></li>
+		<li><code>port</code> is the port number. Have to learn more about this.</li>
+		<li><code>path</code> is a path at the server; if omitted is the root directory</li>
+		<li><code>filename</code> is the final name of the file we are looking at</li>
+	</ul>
+
+	<h1>HTML vs XHTML </h1>
+	Much stricter version of HTML. Must have doctype, must use closing bracket with forward slash for single tags. Nees html head title and body tags.
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--- called js_tutorials because this page was originally going to host all the tutorials --->
+
+<head>
+	<title>Jordan Mandel Software Developer</title>
+	<link rel="icon" type="image/x-icon" href="../images/watermelon_favicon/favicon.ico">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</script>
+	<style>
+		pre {
+			background-color: #f9ebf9;
+		}
+
+		tt {
+			background-color: #f9ebf9;
+		}
+	</style>
+</head>
+
+
+
+<body>
+	<header>
+		<a href="../index.html" alt="the index page"> go back to index</a>
+	</header>
+	<nav>
+	</nav>
+
+
+</body>
+
+</html>

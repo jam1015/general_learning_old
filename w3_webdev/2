@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--- called js_tutorials because this page was originally going to host all the tutorials --->
+
+<head>
+	<title>W3 JS API</title>
+	<link rel="icon" type="image/x-icon" href="../images/watermelon_favicon/favicon.ico">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</script>
+	<style>
+		pre {
+			background-color: #f9ebf9;
+		}
+
+		tt,
+		code {
+			background-color: #f9ebf9;
+		}
+	</style>
+</head>
+
+
+
+<header>
+	<a href="../index.html" alt="the index page"> go back to index</a>
+</header>
+
+<body>
+	<h1 id="what-is-an-api">What is an API</h1>
+	<ul>
+		<li>stands for Application Programming Interface</li>
+		<li>extends functionalities of things like servers and browsers
+			<ul>
+				<li>Browsers come with APIs, such as a geolocation API</li>
+			</ul>
+		</li>
+	</ul>
+	<pre><code>const myElement = document.getElementById(&quot;demo&quot;)
+
+function getLocation() {
+    if (navigator.geolocation){
+    navigator.geolocation.getCurrentPosition(showPosition);}
+    else {
+    myElement.innerHTML = &quot;Geolocation is not supported by this browser.&quot;;
+    }
+    }
+
+function showPosition(position) {
+    myElement.innerHTML = &quot;Lattitude: &quot; + position.coords.latitude + &quot;&lt;br&gt;Longitude: &quot; + position.coords.longitude;
+    }</code></pre>
+	<p>This doesn’t seem to work on FireFox.</p>
+	<h1 id="js-validation-api">JS Validation API</h1>
+	<p>They give examples of builtin ways of validating input.</p>
+	<pre><code>
+ &lt;input id=&quot;id1&quot; type=&quot;number&quot; min=&quot;100&quot; max=&quot;300&quot; required&gt;
+&lt;button onclick=&quot;myFunction()&quot;&gt;OK&lt;/button&gt;
+
+&lt;p id=&quot;demo&quot;&gt;&lt;/p&gt;
+
+&lt;script&gt;
+function myFunction() {
+  const inpObj = document.getElementById(&quot;id1&quot;);
+  if (!inpObj.checkValidity()) {
+    document.getElementById(&quot;demo&quot;).innerHTML = inpObj.validationMessage;
+  }
+}
+&lt;/script&gt; 
+</code></pre>
+
+	<p>There is the <code>validity</code>: valid or a collection of ways that it is invalid. <code>validationMessage</code>, and <code>willValidate</code> properties.</p>
+
+	<h1 id="web-history-api">Web History API</h1>
+	<p>Covered this before.</p>
+	<pre><code>history.back()
+window.history.forward()
+window.history.go()
+window.history.length()</code></pre>
+	<p>Can be preceded by <code>window</code>.</p>
+	Can also write things down.
+
+	<h1 id="web-storage-api">Web Storage API</h1>
+	<pre><code>localStorage.setItem(&quot;name&quot;, &quot;John Doe&quot;)</code></pre>
+	<p>and</p>
+	<pre><code>localStorage.getItem(&quot;name&quot;)</code></pre>
+	<p><code>sessionStorage</code> is like <code>localStorage</code> but is deleted when browser closes. <code>key(n)</code>: what is the name of the object <code>length</code>: how many objects in storage <code>removeItem(keyname)</code> removes a particular key from storage. related are <code>window.localStorage</code> and <code>window.sessionStorage</code></p>
+
+<h1 id="web-workers-api">Web Workers API</h1>
+<p>Runs in background without affecting performancer of the page. Might want to check if browser has support:</p>
+<pre><code>if (typeof(Worker) !== &quot;undefined&quot;) {
+  // Yes! Web worker support!
+  // Some code.....
+} else {
+  // Sorry! No Web Worker support..
+} </code></pre>
+<p>Here is a simple example:</p>
+<pre><code>let i = 0;
+
+function timedCount() {
+  i ++;
+  postMessage(i);
+  setTimeout(&quot;timedCount()&quot;,500);
+}
+
+timedCount(); </code></pre>
+<p>then we make a webworker from witnin the webpage:</p>
+<pre><code>if (typeof(w) == &quot;undefined&quot;) {
+  w = new Worker(&quot;demo_workers.js&quot;);
+}</code></pre>
+
+<p>Make it respnd to messages:</p>
+<pre><code>w.onmessage = function(event){
+document.getElementById(&quot;result&quot;).innerHTML = event.data;
+}</code></pre>
+<p>Can use <code>w.terminate()</code> method. afterwards <code>w = undefined;</code> if you want to reuse it later. Will have to check in on this later. Workers don’t have access to <code>DOM</code> or <code>BOM</code>.</p>
+
+<h1 id="js-fetch-api">JS Fetch API</h1>
+<p>Will learn later; beats <code>XMLHttpRequest</code>. Will specifically learn in the modern javascript tutorial.</p>
+
+<h1 id="geolocation-api">Geolocation API</h1>
+<p><code>navigator.geolocation.getCurrentPosition()</code>: you pass it a function that takes <code>position</code> as an argument which then has <code>position.coords.latitude</code> and <code>position.coords.longitude</code>. 
+
+Second parameter s a function to respond to errors:</p>
+
+<pre><code>function showError(error) {
+switch(error.code) {
+  case error.PERMISSION_DENIED:
+    x.innerHTML = &quot;User denied the request for Geolocation.&quot;
+    break;
+  case error.POSITION_UNAVAILABLE:
+    x.innerHTML = &quot;Location information is unavailable.&quot;
+    break;
+  case error.TIMEOUT:
+    x.innerHTML = &quot;The request to get user location timed out.&quot;
+    break;
+  case error.UNKNOWN_ERROR:
+    x.innerHTML = &quot;An unknown error occurred.&quot;
+    break;
+}
+} 
+
+</code></pre>
+<p>Can use maps API to dispay coordinates on map. <code>navigator.geolocation.getCurrentPosition()</code> returns an object with the properties:</p>
+<pre><code>coords.latitude
+coords.longitude
+coords.accuracy
+coords.altitude
+coords.altitudeAccuracy
+coords.heading
+coords.speed
+timestamp</code></pre>
+<p>also a <code>watchposition</code> method.</p>
+
+# JSON
+- Will just read through it.
+- `JSON.parse()`
+- `JSON.stringify()`
+- makes texzt easy to work with.
+- no date object
+- can pass a reviver function to `parse` to process; usefulf for converting dates
+- parsing just an array written as text gives an array.
+- avoid functions in json
+- can loop through object properties
+
+## JSON Server Interactions
+Will learn more about this when I deal with fetch  API. Should go back, probably, and learn `XMLHttpRequest`.
+Talks about PHP server: will have to learn more about that later.
+
+</body>
+
+</html>

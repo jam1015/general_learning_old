@@ -1,0 +1,39 @@
+a:link{
+	color: green;
+}
+
+nav {
+	display: inline;
+	text-shadow: 2px 2px 22px yellow;
+	background-color:lightblue;
+}
+
+P {text-align:right;
+	background-color:silver}
+
+#felicia {
+	background-color:lightpink;
+	text-align:center;
+}
+
+#exercise_aside {
+	background-image:url("images/rainbow.jpg");
+}
+
+aside {text-align: right}
+
+.green {
+	color:darkgreen;
+	outline: 5px solid red;
+	border:5px dashed green;
+}
+
+.inline{
+	display: inline;
+}
+
+article.green{
+	background-color:#abcdef88;
+}
+
+/* * {text-align: center;} */

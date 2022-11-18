@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--- called js_tutorials because this page was originally going to host all the tutorials --->
+
+<head>
+	<title>W3 JS HTML BOM</title>
+	<link rel="icon" type="image/x-icon" href="../images/watermelon_favicon/favicon.ico">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</script>
+	<style>
+		pre {
+			background-color: #f9ebf9;
+		}
+
+		tt,
+		code {
+			background-color: #f9ebf9;
+		}
+	</style>
+</head>
+
+
+
+<header>
+	<a href="../index.html" alt="the index page"> go back to index</a>
+</header>
+
+<body>
+	<h1 id="js-html-dom-document">The Window Object</h1>
+- Supported by all browsers
+- Global variables belong to window object
+- Global functions are methods of the window object
+- This includes the document object `window.document.getElementById("header")` is the same as `document.getElementById("header")`
+
+Imprtant properties of the window object include: `window.innerWidth` and `window.innerHeight`
+
+</body>
+
+</html>

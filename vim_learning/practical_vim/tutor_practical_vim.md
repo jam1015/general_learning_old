@@ -218,7 +218,7 @@ Insert longer character code with `<C-v>u{code}`. Uses hexadecimal code.
 - The digraphs can be induitive, for example `12` inserts `½`. `<<` and `>>` insert `«` and `»`. `?I` inserts `¿` (*I*nverted). 
 - `:h digraphs-default` describes the conventions.
 - `:digraphs` puts out a complete list.
-- `:h digraphs-table` is more user-friendly than `:digraphs`
+- `:h digraph-table` is more user-friendly than `:digraphs`
 
 ### Tip 19 *Example*: Overwrite Existing Text with Replace Mode
 
@@ -917,7 +917,7 @@ Can also linewise-visually select lines and  go `:`<,`>norm @a`
 ### Tip 69: Append Commands to a Macro
 Use a capital letter to append to a macro. Works for yanking as well. Stored in the same registers as yanks.
 
-### Tip 70: Append Commands to a Macro
+### Tip 70: Act Upon a Collection of Files
 ---
 
 *practical_vim/macros/ruby_module/animal.rb*
@@ -987,6 +987,20 @@ Can use the substitute command
 
 ### Tip 73: Tune Case Sensitivity of Search Patterns
 
-can type `\c` or `\C` 
+can type `\c` or `\C` at end for case insensitivity or sensitivity respectively
 
 ### Tip 74: Use the \v Pattern Switch for Regex Searches 
+ it makes searching with a regex much eaiser so that everything but `-`, and alphanumeric characters have a special meaning; closer to perl regex than posix, which is what is used without `\v`.
+
+ `\{x}` matches an alphanumeric class
+
+
+### Tip 75: Use the \V Literal Swtitch for Verbatim searches
+after `\V` only the backslash has special meaning.
+
+### Tip 76: Use Parenthese to Capture Submatches
+can reference previous matches in parenthases using `\1` ... and higher numbers up to `9` .  
+
+`\_s` matches white space or line break. `\_a` matches alphabetic character, or line break `\a` just alphabetic character. `\n` is just for line break.
+
+Can use `%()` to avoid capturing the pattern in a register

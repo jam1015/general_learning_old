@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--- called js_tutorials because this page was originally going to host all the tutorials --->
+
+<head>
+	<title>W3 JS Functions</title>
+	<link rel="icon" type="image/x-icon" href="../images/watermelon_favicon/favicon.ico">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</script>
+	<style>
+		pre {
+			background-color: #f9ebf9;
+		}
+
+		tt,
+		code {
+			background-color: #f9ebf9;
+		}
+	</style>
+</head>
+
+
+
+<header>
+	<a href="../index.html" alt="the index page"> go back to index</a>
+</header>
+
+<body>
+	<h1 id="js-html-dom-document">JS HTML DOM Document</h1>
+	<h2 id="finding-html">Finding HTML</h2>
+	<pre><code>document.getElementById(id)
+document.getElementByTagName(name)
+document.getElementByClassName(name)</code></pre>
+	<h2 id="changing-html-elements">Changing HTML Elements</h2>
+	<pre><code>element.innerHTML = ...
+element.attribute = ...
+element.style.property = ...</code></pre>
+	<h2 id="adding-and-deleting-element">Adding and Deleting element</h2>
+	<pre><code>document.createElement(element)
+document.removeChild(element)
+document.appendChild(element)
+document.replaceChild(new, old)
+document.write(text)</code></pre>
+	<p>#Adding Even Handlers</p>
+	<pre><code>documetn.getelementById(id).onclick = function(){ ... }</code></pre>
+	<h2>Finding HTML Objects</h2>
+	<p>A whole host of ways to find document objects.</p>
+
+	<h1 id="js-html-dom-elements">JS HTML DOM Elements</h1>
+	<p>Many ways to find HTML elements ## By ID</p>
+	<pre><code>const element = document.getElementById(&quot;intro&quot;);</code></pre>
+	<h2 id="by-tag-name">By Tag Name</h2>
+	<pre><code>const element= document.getelementByTagName(&quot;p&quot;);</code></pre>
+	<p>look at this example of it in action:</p>
+	<pre><code>const x = document.getElementById(&quot;main&quot;);
+const y = x.getelementByTagName(&quot;p&quot;);</code></pre>
+	<h2 id="by-class-name">By Class Name</h2>
+	<pre><code>const x = document.getElementByClassName(&quot;intro&quot;);</code></pre>
+	<h2 id="by-css-selectors">By CSS Selectors</h2>
+	<pre><code>const x = document.querySelectorAll(&quot;p.intro&quot;)</code></pre>
+	<p>Returns an array.</p>
+	<h2 id="by-html-object-collections">By HTML Object Collections</h2>
+	<p>Returns array. Options include:</p>
+	<pre><code>document.anchors
+document.body
+document.documentElement
+document.embeds
+document.forms
+document.head
+document.images
+document.links
+document.scripts
+document.title</code></pre>
+
+	<h1 id="js-html-dom-changing-html">JS HTML DOM: Changing HTML</h1>
+	<p>One example:</p>
+	<pre><code>document.getelementById(&quot;p1&quot;).innerHTML = &quot;new text&quot;;</code></pre>
+	<h2 id="changing-the-value-of-an-attribute">Changing The Value of an Attribute</h2>
+	<pre><code>document.getElementById(id).attribute = new value;</code></pre>
+	<p>Can use a function like <code>date()</code></p>
+	<p>Can use <code>document.write</code>. It rewrites the document.</p>
+	<h2 id="dom-forms">DOM Forms</h2>
+	<p>Different ways of validation (can reference later) Topics covered include.</p>
+	<pre><code>function validateForm() {
+  let x = document.forms[&quot;myForm&quot;][&quot;fname&quot;].value;
+  if (x == &quot;&quot;) {
+    alert(&quot;Name must be filled out&quot;);
+    return false;
+  }
+} </code></pre>
+	<p>More complicated examples are of course possible.</p>
+	<p>Can use html attributes: <code>disabled</code>, <code>max</code>, <code>min</code>, <code>pattern</code>,
+		<code>required</code>, <code>type</code>.
+	</p>
+	<p>There are also css pseudoselectors: <code>:disabled</code>, <code>:invalid</code>, <code>:optional</code>,
+		<code>:required</code>, <code>:valid</code>.
+	</p>
+	<h1 id="js-dom-changing-css">JS DOM Changing CSS</h1>
+
+	<pre><code>```
+document.getElementById(id).style.property = new style;
+```
+
+Example:
+
+```
+document.getElementById(&quot;p2&quot;).style.color = &quot;blue&quot;;
+```</code></pre>
+
+	<h2 id="using-events">Using Events</h2>
+	<p>An example might be:</p>
+	<pre><code>&lt;button type=&quot;button&quot;
+onclick=&quot;document.getElementById(&#39;id1&#39;).style.color = &#39;red&#39;&quot;&gt;
+Click Me!&lt;/button&gt;</code></pre>
+
+	<h1 id="dom-animations">DOM Animations</h1>
+	<p>The setup they recommend is:</p>
+	<pre><code>#container {
+  width: 400px;
+  height: 400px;
+  position: relative;
+  background: yellow;
+}
+#animate {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  background: red;
+}
+
+ &lt;div id =&quot;container&quot;&gt;
+       &lt;div id =&quot;animate&quot;&gt;My animation will go here&lt;/div&gt;
+ &lt;/div&gt; </code></pre>
+
+	<p>Basic Code looks like:</p>
+	<pre><code>id = setInterval(frame, 5);
+
+function frame() {
+  if (/* test for finished */) {
+    clearInterval(id);
+  } else {
+    /* code to change the element style */ 
+  }
+}</code></pre>
+
+	<p>Their example is:</p>
+	<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;style&gt;
+#container {
+  width: 400px;
+  height: 400px;
+  position: relative;
+  background: yellow;
+}
+#animate {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  background-color: red;
+}
+&lt;/style&gt;
+&lt;body&gt;
+
+&lt;p&gt;&lt;button onclick=&quot;myMove()&quot;&gt;Click Me&lt;/button&gt;&lt;/p&gt; 
+
+&lt;div id =&quot;container&quot;&gt;
+  &lt;div id =&quot;animate&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+function myMove() {
+  let id = null;
+  const elem = document.getElementById(&quot;animate&quot;);   
+  let pos = 0;
+  clearInterval(id);
+  id = setInterval(frame, 5);
+  function frame() {
+    if (pos == 350) {
+      clearInterval(id);
+    } else {
+      pos++; 
+      elem.style.top = pos + &quot;px&quot;; 
+      elem.style.left = pos + &quot;px&quot;; 
+    }
+  }
+}
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+	<h1 id="js-html-dom-events">JS HTML DOM Events</h1>
+	<p>There are <code>html</code> events.</p>
+	<pre><code>onclick=&quot;some js goes here&quot;</code></pre>
+	<p>Here is an example:</p>
+	<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+
+&lt;h2&gt;JavaScript HTML Events&lt;/h2&gt;
+&lt;h2 onclick=&quot;changeText(this)&quot;&gt;Click on this text!&lt;/h2&gt;
+
+&lt;script&gt;
+function changeText(id) {
+  id.innerHTML = &quot;Ooops!&quot;;
+}
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+	<p>Can assign attributes, including events:</p>
+	<pre><code>&lt;button id=&quot;myBtn&quot;&gt;Try it&lt;/button&gt;
+
+&lt;p id=&quot;demo&quot;&gt;&lt;/p&gt;
+
+&lt;script&gt;</code></pre>
+	<p>document.getElementById(“myBtn”).onclick = displayDate;</p>
+	<p>function displayDate() { document.getElementById(“demo”).innerHTML = Date(); } ```</p>
+	<p>There are <code>onload</code> and <code>onunload</code> events.</p>
+
+	<p>There is also the <code>onchange</code> event. After event loses focus. <code>onmouseover</code>,
+		<code>onmouseout</code>. Have to do <code>onmouseout</code>.
+	</p>
+	<p>There is also <code>onmousedown</code>, <code>onmouseup</code>, <code>onclick</code>.</p>
+	<h1 id="html-dom-eventlsitener">HTML DOM EventLsitener</h1>
+	<p><code>addEventListener()</code> adds an event handler without overwriting. There is also
+		<code>removeEventListener()</code>. Note that there isn’t the prefix <code>on</code>.
+	</p>
+	<p>Good for when we can’t actualy change the <code>HTML</code>. Can add multiple event listeners.</p>
+	<p>Can add <code>resize</code> listener to window object.</p>
+	<p>Have to call another function to pass parameters.</p>
+	<p>Bubbling is default, add parameter: <code>addEventListener(event,function, useCapture);</code>
+		(<code>useCapture</code> can be <code>true</code> or <code>false</code>.</p>
+	<p>There is also</p>
+	<pre><code>element.removeEventListener(&quot;mousemove&quot;, myFunction); </code></pre>
+	<h1 id="html-dom-navigation">HTML DOM Navigation</h1>
+	<p>Everything is a node. They have all sorts of relationships. They don’t have text, they have text nodes,
+		accessible by the <code>innerHTML</code> property. Three ways of accessing:</p>
+	<pre><code>myTitle = document.getElementById(&quot;demo&quot;).innerHTML;
+myTitle = document.getElementById(&quot;demo&quot;).firstChild.nodeValue;
+myTitle = document.getElementById(&quot;demo&quot;).childNodes[0].nodeValue;</code></pre>
+	<h2 id="dom-root-nodes">
+		DOM Root Nodes
+	</h2>
+	<p>Two special nodes are <code>document.body</code>: the document body, and <code>document.documentElement</code>:
+		the full document.</p>
+	<ul>
+		<li>
+			<p>There is also the <code>nodeName</code> property. For element node: the tag name. For attribute node: the
+				attribute name: for nodeName it is <code>#text</code>, for document it is <code>#document</code>.
+				Readonly.</p>
+		</li>
+		<li>
+			<p><code>nodeValue</code>; for element nodes it is <code>null</code>. for text nodes it is the text itself.
+				for attribute nodes it is the attribute value. Might not be <code>readOnly</code>.</p>
+		</li>
+		<li>
+			<p>nodeType is read only. It returns the type of a node. returns a number.</p>
+		</li>
+	</ul>
+
+	<h1 id="js-html-dom-elements">JS HTML DOM Elements</h1>
+	<p>Can append elements. But have to create it first. For example:</p>
+	<pre><code>const para = document.createElement(&quot;p&quot;);
+const node = document.createTextNode(&quot;This is new.&quot;);
+para.appendChild(node);
+
+const element = document.getElementById(&quot;div1&quot;);
+element.appendChild(para);</code></pre>
+	<p>That used <code>appendChild</code>. We can also use <code>insertBefore</code>. Inserts before an existing child.
+		Like this: <tt>element.insertBefore(new_element,existing_child)</tt> whereas there is also <tt>element.appendChild(node)</tt>
+	</p>
+	<p>There is the remove method: <code>exsiting_element.remove()</code>.</p>
+
+	<p>Can also specify a node and remove it. Can also remove a child with <code>removeChild</code>. Also the weird
+		example of:</p>
+	<pre><code>
+	const parent = document.getElementById(&quot;div1&quot;);
+	const child = document.getElementById(&quot;p1&quot;);
+	child.parentNode.removeChild(child);</code></pre>
+	<p>There is also the <code>replaceChild</code> method.</p>
+	<pre><code>existing_child = document.getElementById(&quot;p1&quot;)
+parent.replaceChild(old_element, existing_child)</code></pre>
+
+# JS HTML DOM Collections
+`getElementsByTagName()` and `getElementByClassName()`, *etc* dont' return an `HTMLCollection` object.
+You can literally index the returned object with brackets, and it has a `.length` property, and you can loop through it, but also you can't use array methods on it.
+
+# JS HTML DOM Node Lists
+Very similar to `DOM Collection`.
+</body>
+
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--- called js_tutorials because this page was originally going to host all the tutorials --->
+
+<head>
+	<title>W3 JS Functions</title>
+	<link rel="icon" type="image/x-icon" href="../images/watermelon_favicon/favicon.ico">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</script>
+	<style>
+		pre {
+			background-color: #f9ebf9;
+		}
+
+		tt,
+		code {
+			background-color: #f9ebf9;
+		}
+	</style>
+</head>
+
+
+
+<header>
+	<a href="../index.html" alt="the index page"> go back to index</a>
+</header>
+
+<body>
+	<h1>JS Function Definitions</h1>
+	<p>Can be created like:</p>
+	<pre><code>function my_fun(a,b){
+a + b;
+};</code></pre>
+	<p>or with an expression like:</p>
+	<pre><code>const my_fun = function(a, b){
+a + b;
+}</code></pre>
+	<p>Functions defined with expresions are not hoisted. Functions can be self invoking:</p>
+	<pre><code>(funtion() {
+let x = &quot;Hello!!&quot;;
+})();</code></pre>
+	Can assign any function not made with a value to a variable; including self-invoking; best to use array. <br>
+	There is a <tt>toString()</tt> method and an <tt>arguments.length</tt> property that you can access in methods.
+
+	<h2>Arrow Functions</h2>
+	<pre><code>var x = function(x,y)
+{
+return x * y;
+}
+
+const x = (x, y) =&gt; x * y;</code></pre>
+	Arrow functions use the <tt>this</tt> keyword differently. Doesn't get <tt>this</tt> from the function scope. So bad
+	for
+	being object methods; but cand find use in a funcion in a function. They are not hoisted. Use const.
+	<h1>JS Function Parameters</h1>
+	<ul>
+		<li>No type ehecking, no checking of number of arguments (missing parapeters are <code>undefined</code>)</li>
+		<li>Can have default parameter like in <code>R</code>.</li>
+		<li>There is an arguments object we can use to access extra arguments. It is an array.</li>
+		<li>Arguments are passed by value, objects are passed by reference.</li>
+	</ul>
+
+	<h1>JS Function Invocation</h1>
+	<ul>
+		<li>When a function is not a method for an object <code>this</code> returns the global object. In a browser it
+			is
+			the window object.</li>
+		<li>Functions can be object constructors.</li>
+	</ul>
+	<h1>JS Function Call</h1>
+	<ul>
+		<li>All functions are object methods
+			<ul>
+				<li>If it is not it is a method of the global object. Syntax is
+					<code>objec_protogype.method.call(input_object)</code> Can
+					append arguments: <code>object_protogype.method.call(method, arg1, arg2)</code>
+				</li>
+			</ul>
+		</li>
+	</ul>
+
+	<h1>JS Function Apply</h1>
+	<ul>
+		<li>
+			<p>Same as <code>call</code> but instead takes arguments as an array:
+				<code>object_protogype.method.call(method, [arg1, arg2])</code>
+		</li>
+		</p>
+		<li>
+			<p>Can do something like <code>Math.max.apply(Math, [1,2,3]);</code> but the first argument doesn’t matter;
+				it
+				just lets us feed an array into a function that wants multiple arguments. Can also do the array
+				<tt>spread</tt> syntax <tt>...array_to_be_broken</tt>
+			</p>
+		</li>
+		<li>
+			There is also the <tt>rest</tt> syntax that goes <tt>f(...args)</tt>, converts the <i>rest</i> of the
+			argumetns
+			to an array.
+		</li>
+		<li>
+			<p>In JavaScript strict mode, if the first argument of the apply() method is not an object, it becomes the
+				owner
+				(object) of the invoked function. In "non-strict" mode, it becomes the global object.</p>
+		</li>
+	</ul>
+
+	<h1>JS Function Bind</h1>
+	<ul>
+		<li><code>object.object_method.bind(another_object_without_that_method)</code></li>
+	</ul>
+	When a function is used as a callback, the `this` is lost (it will be undefined). Can use bind instead;
+	Can fix it with:
+	`let method_name = object.method_name.bind(object);`
+
+	<h1>JS Function Closures</h1>
+	Global variables can be made local with closures.
+	Variables defined without a keyword are always global so don't do this.
+	<pre><code>const add = (function () {
+  let counter = 0;
+    return function () {counter += 1; return counter}
+    })();
+
+    add();
+    add();
+    add();</code></pre>
+
+	Returned function has access to the counter variable.
+</body>
+
+</html>

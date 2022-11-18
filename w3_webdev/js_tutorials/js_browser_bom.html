@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--- called js_tutorials because this page was originally going to host all the tutorials --->
+
+<head>
+	<title>W3 JS HTML BOM</title>
+	<link rel="icon" type="image/x-icon" href="../images/watermelon_favicon/favicon.ico">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</script>
+	<style>
+		pre {
+			background-color: #f9ebf9;
+		}
+
+		tt,
+		code {
+			background-color: #f9ebf9;
+		}
+	</style>
+</head>
+
+
+
+<header>
+	<a href="../index.html" alt="the index page"> go back to index</a>
+</header>
+
+<body>
+	<h1 id="js-html-dom-document">The Window Object</h1>
+
+	<ul>
+		<li>Supported by all browsers</li>
+		<li>Global variables belong to window object</li>
+		<li>Global functions are methods of the window object</li>
+		<li>This includes the document object <code>window.document.getElementById("header")</code> is the same as <code>document.getElementById("header")</code></li>
+	</ul>
+	<p>Imprtant properties of the window object include: <code>window.innerWidth</code> and <code>window.innerHeight</code> Some methods include <code>window.open()</code> , <code>window.close()</code>, <code>window.moveTo()</code> and <code>window.resizeTo()</code>.</p>
+
+	<p>Doesn’t appear that you can set to resize things. Will have to look into this further. Other methods include: <code>window.close()</code>, <code>window.open()</code>, <code>window.moveTo()</code> and <code>window.resizeTo()</code></p>
+
+	<h1 id="window-screen">Window Screen</h1>
+	<p>the <code>window.screen</code> object. Has properties <code>height</code> <code>width</code> <code>availWidth</code> (ie minus available navbars) <code>availHeight</code> <code>colorDepth</code> <code>pixelDepth</code>.</p>
+	<h1 id="location">Location</h1>
+	<ul>
+		<li><code>window.location.href</code> is the whole url</li>
+		<li><code>window.location.hostname</code> is the base of the url</li>
+		<li><code>window.location.pathname</code> is the path and the filename of the current page (the end of the url)</li>
+		<li><code>window.location.protocol</code> is <code>http</code> or <code>https</code>.</li>
+		<li><code>window.location.assign()</code> loads a new document</li>
+	</ul>
+	<h1 id="history">History</h1>
+	<p><code>history.back()</code>, <code>history.forward()</code></p>
+	<h1 id="navigator">Navigator</h1>
+	<p>Has info about the browser: <code>navigator.cookieEnabled</code> <code>navigator.appName</code> <code>navigator.appCodeName</code> ^^^ A lot of these are unreliable</p>
+	<p><code>navigator.platform</code> what operating system <code>navigator.language</code> what language</p>
+
+	<h1 id="js-popup-boxes">JS Popup Boxes</h1>
+	<pre><code>Use `\n` to get newline in these windows.</code></pre>
+	<p><code>window.alert</code> <code>window.confirm</code> <code>window.prompt</code></p>
+
+	<h1 id="js-timing">JS Timing</h1>
+	<p><code>setTimeout()</code> and <code>setInterval()</code> from before.</p>
+	<p>There is</p>
+	<pre><code>haha = setTimeout(fun, ms);
+clearTimeout(haha);</code></pre>
+	<p>Can be done with <code>clearInterval()</code> too.</p>
+	<h1 id="js-cookies">JS Cookies</h1>
+	<p>One of the things we can do is:</p>
+	<pre><code>document.cookie = &quot;username=John Doe&quot;;</code></pre>
+	<p>or</p>
+	<pre><code>document.cookie = &quot;username=lala lele; expires=Thu, 18 Dec 2013:00:00 UTC; path=/&quot;;</code></pre>
+	<p>Then can read the cookies with</p>
+	<pre><code>let x = document.cookie;</code></pre>
+	<p>Returns all the cookies separated by <code>;</code>.</p>
+	<p>To delete a cookie: document.cookie = “username=; expired=Thu, 01 Jan 1970 00:00:00 UTC; path=/;”; Have to do a special thing to get the way its going.</p>
+	<p>Have to have a JS function that searches the cookie string. It is includes:</p>
+
+	<pre><code>function getCookie(cname) {
+  let name = cname + &quot;=&quot;;
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let ca = decodedCookie.split(&#39;;&#39;);
+  for(let i = 0; i &lt;ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == &#39; &#39;) {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return &quot;&quot;;
+}</code></pre>
+	<p>Can then have a function that checks it:</p>
+	<pre><code>function checkCookie() {
+  let username = getCookie(&quot;username&quot;);
+  if (username != &quot;&quot;) {
+   alert(&quot;Welcome again &quot; + username);
+  } else {
+    username = prompt(&quot;Please enter your name:&quot;, &quot;&quot;);
+    if (username != &quot;&quot; &amp;&amp; username != null) {
+      setCookie(&quot;username&quot;, username, 365);
+    }
+  }
+}
+	</code></pre>
+</body>
+
+</html>

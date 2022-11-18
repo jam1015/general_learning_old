@@ -394,8 +394,62 @@ there are more options: `-depth` does depth first actions. `-maxdepth`, `-mindep
 
 can just go
 
+### compressing
+
+```
+Option
+Long Option
+Description
+-c
+--stdout
+--to-stdout
+Write output to standard output and keep the 
+original files.
+
+-d
+--decompress
+--uncompress
+Decompress. This causes gzip to act like 
+gunzip.
+
+-f
+--force
+Force compression even if a compressed 
+version of the original file already exists.
+
+-h
+--help
+Display usage information.
+
+-l
+--list
+List compression statistics for each file 
+compressed.
+
+-r
+--recursive
+If one or more arguments on the command line
+is a directory, recursively compress files 
+contained within them.
+
+-t
+--test
+Test the integrity of a compressed file.
+
+-v
+--verbose
+Display verbose messages while compressing. 
+-number
+```
+
+
+Set amount of compression. number is an 
+integer in the range of 1 (fastest, least 
+compression) to 9 (slowest, most 
+compression). The values 1 and 9 may also be 
 `gunzip foo.txt` leaving of the `.gz` because it is assumed.
 
+`gzip` can use stdio
 
 `zcat` uses cat on the zipped file.  there is also `zless`
 
@@ -413,6 +467,7 @@ remembering them for long term storage.
 ```
 tar c path
 ```
+*these are modes, there are also options*
 
 c is for create
 x is for extract
@@ -421,14 +476,18 @@ t is for list
 
 [make playground]
 
+```
 tar cf playground.tar playground
 
 tar tf playgorund.tar
-tar tvf playground.tar
+tar tvf playground.tar # verbose
+```
 
 make directory, change into it
 
+```
 tar xf ../playground.tar
+```
 
 
 ownership is transferred to decompressor
@@ -444,6 +503,7 @@ cd foo
 tar xf ../playground2.tar
 ls
 ```
+
 output is `home` because of how the pathnames work.
 
 
@@ -455,24 +515,26 @@ tar xf archive.tar pathname
 ```
 
 or
+
 ```
 tar xf ../playground2.tar --wildards 'home/me/playground/dir-*/file-A'
 ```
 
+only gets the specified files. the latter wildcards only work for gnu TAR.
 
 
 can use it with `find` 
+
 ```
-[me@linuxbox ~]$ find playground -name 'file-A' -exec tar rf 
-playground.tar '{}' '+'
+[me@linuxbox ~]$ find playground -name 'file-A' -exec tar rf playground.tar '{}' '+'
 ```
 
 recall that `+` makes it run only once.
 
 
-can also make incremental backups; look up more later
+can also make incremental backups; newer than last tar in append mode; look up more later?; good online documentation for this
 
-look at:
+can use stdin/stdout
 
 ```
 [me@linuxbox ~]$ find playground -name 'file-A' | tar cf - --files-
@@ -481,19 +543,26 @@ from=- | gzip > playground.tgz
 
 `-` means stdin/out
 
+can shorten it to this:
+
 ```
 [me@linuxbox ~]$ find playground -name 'file-A' | tar czf 
 playground.tgz -T -
 ```
 If we had wanted to create a bzip2-compressed archive instead, we could have done
 this:
+
 ```
 [me@linuxbox ~]$ find playground -name 'file-A' | tar cjf 
 playground.tbz -T -
 ```
 
-```
+`z` for gzip.
+
 tar over ssh
+
+```
+
 [me@linuxbox ~]$ mkdir remote-stuff
 [me@linuxbox ~]$ cd remote-stuff
 [me@linuxbox remote-stuff]$ ssh remote-sys 'tar cf - Documents' | tar
@@ -501,6 +570,323 @@ xf -
 me@remote-sys’s password:
 [me@linuxbox remote-stuff]$ ls
 Documents
+
 ```
 
+f sends tar to stdout, sx is for expand mode
 
+#### zip
+
+```
+zip -r playground.zip playground # have to do -r to get contents
+```
+
+the zip program will update archives rather than replacing them
+
+the `-l` option just lists.
+
+`unzip -l` function just lists
+
+can specify files
+
+`unzip -l ../playground.zip playground/dir-087/file-z`
+
+`-v` makes it more verbose.
+
+
+can use stdio: in this case it was the `-@` option that makes it take a list of file names
+
+```
+find playground -name "file-A" | zip -@ file-A.zip
+```
+
+can write to stdout but it's not that great.  unzip doesn't accept stdin
+
+can do more normal stdin:
+
+```
+ls -l /etc/ | zip ls-etc.zip -
+```
+
+unzip can be sent to stdout though
+
+```
+unzip -p ls-etc.zip | less
+```
+
+zip is mostly used for window systems
+
+
+## synchronizing  files and directories
+
+```
+rsync options source destination
+```
+- local: local file
+- remote: `[user@]host:path`
+- rsync server: `rsync://[user@]host[:port]/path`
+
+one must be local
+
+`-a` is for archiving; recursion and preservation of file attributes to make a mirror of the playground directory
+`-v` is for verbose output
+
+```
+rsync -av playground foo
+```
+
+it only does as much work as it needs to.
+
+```
+rsync source destination
+```
+
+copies source into destination
+
+```
+rsync source/ destination
+```
+copies contents of source into destination
+
+
+imagine an external drive at `/media/BigDisk`
+
+```
+mkdir /media/BigDisk/backup
+sudo rsync -av --delete /etc /home /usr/local /media/BigDisk/backup
+```
+
+delete option deletes files that are no longer there
+
+could alias this whole command
+
+
+### rsync over a network
+
+ there is also an rsync server.
+
+## 19 Regex:
+
+```
+-i --ignore-case Ignore case. Do not distinguish between uppercase and lowercase characters.
+
+-v --invert-match Invert match. Normally, grep prints lines that contain a match. This option causes grep to print every line that does not contain a match.
+
+-c --count Print the number of matches (or non-matches if the -v option is also specified) instead of the lines themselves.
+
+-l --files-with-matches Print the name of each file that contains a match instead of the lines themselves.
+
+-L --files-without-match Like the -l option, but print only the names of files that do not contain matches.
+
+-n --line-number
+Prefix each matching line with the number of the line within the file.
+
+-h --no-filename For multi-file searches, suppress output of filenames
+```
+
+make directories
+
+```
+grep bzip dirlist*.txt
+grep -l bzip dirlist*.txt # just list directories
+
+grep -L bzip dirlist*.txt # just ones that that don' have match
+```
+
+regex metacharacters inclue
+
+```
+^ $ . [ ] { } - ? * ( ) | \
+```
+
+```
+grep -h '.zip' dirlist*.txt
+```
+
+here the `.` means any character.
+
+the `^` and `$` sign only if the regex is at the beginning or ending of the line.
+
+bracket expansions: `grep -h '[bg]zip' dirlist*.txt`
+bracket expansions (with netation): `grep -h '[^bg]zip' dirlist*.txt`
+
+- in this case the caret is negation but only if it is the first one.
+- there still has to be a character
+
+character range:
+
+```
+grep -h '^[A-Z]' dirlist*.txt
+```
+
+there can be multiple ranges
+
+`grep -h '^[A-Za-z0-9]' dirlist*.txt`
+
+to actuallyn match a dssh make it the first one
+`grep -h '^[-AZ]' dirlist*.txt`
+
+
+there is a whole list of printable characters classes.
+
+useful because range in shell expansion (not regex) is based on dictionary collation order.
+
+example: [:digit:]
+
+### basic vs extended regular expressions
+
+use -`-E` option for extended regex.
+
+basic regec characters are `^ $ . [ ] *`
+
+extended regex characers are `() { } ? + |`
+
+### alternation
+
+`echo "AAA" | grep -E 'AAA|BBB'`
+`echo "AAA" | grep -E 'AAA|BBB|ccc'`
+`grep -Eh '^(bz|gz|zip)' dirlist*.txt`
+
+
+### quantifiers
+ the `?` makes it optional
+here is a crazy regex for a phone number:
+`^\(?[0-9][0-9][0-9]\)? [0-9][0-9][0-9]-[0-9][0-9][0-9][0-9]$`
+
+the parehtnese are optional.
+
+there is also the `*` which means match zero or more times, whereas `?` just matches once.
+
+here is a crude way to match a sentence: `[[:upper:]][[:upper:][:lower:] ]*\`
+
+
+### `+` matches one or more times
+
+`^([[:alpha:]]+ ?)+$`
+
+
+### `{}` match a specific number of times
+
+`{n}, {n,m} {n,} {,m}`
+
+so
+
+`^\(?[0-9][0-9][0-9]\)? [0-9][0-9][0-9]-[0-9][0-9][0-9][0-9]$`
+
+becomes
+
+`\(?[0-9]{3}\)? [0-9]{3}-[0-9]{4}$`
+
+
+### regex with find
+
+grep wants lines that contain a match, find wants things that are exact match
+
+```
+find . -regex '.*[^-_./0-9a-zA-Z].*'
+```
+
+will match messy file names
+
+### regex with locate
+
+```
+locate --regex 'bin/(bz|gz|zip)'
+```
+
+## Ch. 20 Text Processing
+
+### cat
+
+`cat -A` displays the control sequences.
+unix ends with linefeed (*ASCII 10*) while msdos use *ASCII 13*
+
+
+there is `dos2unix` and `unix2dos`.
+
+### sort
+
+sorts contents of standard input and sends results to standard output. 
+
+or gan go
+
+`sort file1.txt file2.txt file3.txt > final_sorted_list.txt`
+
+`-b` is ignore blanks.  `-f` is  ignore case. `-n` is numerics. `-r` is reverse. `-m` don't do sorting; it is `merge`.
+`-o` is `--outpuf-file`
+`-t`field separator.
+
+```
+ls -l /usr/bin | sort -nrk 5 | head
+du -s /usr/share* | sort -nr | head
+```
+
+sort uses whitespace as delimeters by default.
+
+can take multiple keys:
+
+```
+sort --key=1,1 --key=2n distros.txt
+```
+
+to include the malformed date:
+
+```
+sort -k 3.7nbr -k 3.7nbr -k 3.4nbr -k 3.4nbr distros.txt
+```
+
+`b` suppresses leading spaces. 
+the dots specify the character to start at in a field, and b ignores leading spaces; apparently only one whitespace character is the delimeter. 
+
+
+`/etc/passwd` uses colons as delimetes.
+
+can sort it with `sort -t ':' -k 7 /etc/passwd | head`
+
+### uniq
+
+removes adjacent duplicate outputs.
+
+`-c` output number of time line occurs
+`-d` output only the repeated ones
+`-g n` skip n fields but no option to change field from whitespacce
+`-i` ignorrecase 
+`-s n` skip n characters
+`-u` onply print unique lines.
+
+### cut
+
+get portions of each line: `-c` for characters, `-f` for fields, `-d` is delimter, `--complement` to.
+
+in my `distros.txt` is space delimited so we can go:
+
+cut -f 3 -d " " distros.txt | cut -c 7-10
+
+
+### expand
+converts tabs to appropriate number of spaces
+
+## 25 Starting a Project
+
+Anything you can output to a echo you can assign to a variable, with all the same expansion rules.
+
+variables are created whenever they are used so we have to be careful when we are making something
+
+can surround variables with braces, which disappear after expansion, so that only what is intendet to be expanded is expanded.
+for example `"${filename}1"` the brackets disappear
+
+
+better to use double quotes to avoid pathname expansion.
+
+
+### here documents
+
+```
+comand << token
+
+input
+
+token
+```
+
+`<<-` ignores tabs to allow for indentation

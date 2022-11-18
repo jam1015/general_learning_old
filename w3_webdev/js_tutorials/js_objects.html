@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--- called js_tutorials because this page was originally going to host all the tutorials --->
+
+<head>
+	<title>W3 JS Objects</title>
+	<link rel="icon" type="image/x-icon" href="../images/watermelon_favicon/favicon.ico">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</script>
+	<style>
+		pre {
+			background-color: #f9ebf9;
+		}
+
+		tt {
+			background-color: #f9ebf9;
+		}
+	</style>
+</head>
+
+
+
+<body>
+	<header>
+		<a href="../index.html" alt="the index page"> go back to index</a>
+	</header>
+	<h1>JS Objects</h1>
+	<p>primitives are <code>string</code>, <code>number</code>, <code>boolean</code>, <code>null</code>, and
+		<code>undefined</code>
+	</p>
+	Objects can have methods.<br>
+	Can create them by making an object literal or with <tt> const lala = new Object(); </tt> specification.<br>
+	Or <tt>obj.create</tt>.<br>
+	Will review <tt>Object.create()</tt><br>
+	JS objects passed by reference.<br>
+
+	<h1>JS Object Properties</h1>
+	<pre>
+objectName.property;
+objectName["property"]
+objectName[expression]
+	</pre>
+
+	Can loop through object properties.
+
+
+	<pre>
+const japan = {capital:"tokyo", population: 120000000, food: "sushi", music: "Koto"}
+for (let y in japan) {
+txt += japan[x]
+}
+	</pre>
+
+	Note the use of the index. Must be a string.
+	Can change properties/add new properties with the same syntax as accessing properties.
+
+	Can delete properties also:
+	<pre>
+delete person.age;
+delete person["age"];
+let x = "age";
+delete person[x];
+	</pre>
+	This can be done even in <tt>strict</tt> mode. Recall that deletion is only prohibited for variables.
+	Can include other objects and arrays.
+	Can use a for loop to access arrays of varying sizes nested in objects.
+<pre><code>for (let i in myObj.cars) {
+  x += &quot;&lt;h1&gt;&quot; + myObj.cars[i].name + &quot;&lt;/h1&gt;&quot;;
+  for (let j in myObj.cars[i].models) {
+    x += myObj.cars[i].models[j];
+  }
+}</code></pre>
+	Other attributes besides the value include
+	<ul>
+		<li><code>enumerable</code></li>
+		<li><code>configurable</code></li>
+		<li><code>writable</code></li>
+	</ul>
+
+	Delete doesn't delete properties inherited from upstream, but will delete downstream properties.
+	<h1>JS Object Methods</h1>
+	Basic OOP. Accessing object method without parentheses will return object definition as a string it seeems.
+	Some types have built-in methods. Like <tt>string.toUpperCase()</tt>
+	<h1>JS Display Objects</h1>
+	Have seen ways of accessing object through normal means, and through a loop that loops through the property
+	names.<br><br>
+	Can also do <tt>Object.values()</tt>. Returns values as an array.<br><br>
+	Or can do <tt>JSON.stringify(example_object)</tt>. Also works for dates, functions, and arrays.
+
+	<h1>JS Object Accessors</h1>
+	Let's us define properties.
+	<pre><code>const france = {
+capital: &quot;paris&quot;,
+food: &quot;frogs&quot;,
+population: 123456,
+museum: &quot;louvre&quot;
+language: &quot;french&quot;
+get lang(){
+return this.language
+}
+set lang(lang){
+this.language=lang;
+}
+};
+
+document.getElementById(&quot;demo&quot;).innerHTML = person.lang;
+france.lang = &quot;occitan&quot;;</code></pre>
+	Advantage is that we avoid parentheses. Can also manipulate properties and arguments in getters and setters.
+	Or can do (for example):
+
+	<pre><code>const obj = {counter: 0};
+Object.defineProperty(obj, &quot;increment&quot;,{get : function(){this.counter++;} });
+Object.defineProperty(obj, &quot;increment&quot;,{set : function(value){this.counter += value;} });</code></pre>
+	Note that it doesn't necessarily follow our intuition of get or set.
+	<h1>JS Object Constructors</h1>
+	Best to use uppercase.
+
+	<pre><code>function Country(capital, food, language, music){
+this.capital = capital;
+this.food = food;
+this.language = language;
+this.music = music;
+this.food_sauce = function(sauce){return this.food + " " + sauce;};
+}
+const china = new Country(beijing, duck, mandarin, opera);</code></pre>
+
+	To add a property, re-declare constructor, or can use a prototype.
+
+	<h1>JS Object Prototypes</h1>
+	The top of the inheritcance chain. Can add functions to object constructors.
+	<pre><code>Country.prototype.music_volume(volume) = function(){return this.music + &quot; &quot; + volume;};</code></pre>
+	<h1>JS Object Iterables</h1>
+	Iterable objects can be iterated over with <tt>for..of</tt>. They implement the <tt>Symbol.iterator</tt> method.
+	Iterables inclue <tt>string</tt>s and <tt>array</tt>s.
+
+	Iterators inplement the <tt>next()</tt> method. It returns object with properties <tt>value</tt> which is the next
+	valuse(ommitted if done is true), and <tt>done</tt> a boolean that lets you know if the iterator is done.
+	<p>Here is an example of a home-made iterable that is actually no good; can’t be used witha <code>for..of</code>
+		statement.</p>
+	<pre><code>// Home Made Iterable
+function myNumbers() {
+  let n = 0;
+  return {
+    next: function() {
+      n += 10;
+      return {value:n, done:false};
+    }
+  };
+}
+</code></pre>
+
+	It needs a <tt>Symbol.iterator</tt> is a function that returns a <tt>next</tt> function. It has to be a function
+	that returns a function that returns a <tt>next</tt> object.
+
+	<pre><code>myNumbers = {}; //  could make an iterable prototype
+    myNumbers[Symbol.iterator] = function(){
+    let n = 0;
+    done = false;
+    return {
+        next() {
+            n += 10;
+            if (n == 100){done = true}
+            return {value:n, done:done};
+        }
+    };
+}</code></pre>
+	Not making sense: will have to trust the <tt>MDN</tt> documentation instead.
+
+	<h1> JS Sets </h1>
+	A collection of unique elements. Includes a <tt>forEach</tt> method that takes a function with a <tt>value</tt>
+	argument. The function is applied to each element. Includes other methods as well.
+	<pre>
+typeof example_set; // returns object
+example_set instanceof Set; //true
+</pre>
+	<h1> JS Maps </h1>
+	<ul>
+		<li>key value pairs; keys can be any data type</li>
+		<li>remembers insertion order</li>
+		<li>has a property that represents the size of the map Can make with <code>new Map()</code> with an array of
+			arrays. The map then has a <code>set</code> method tha takes two arguments. A <code>.get()</code> method
+			that takes a key. A <code>.size()</code> method. A <code>.delete()</code> method. A <code>.clear()</code>
+			method. A <code>.has()</code> method. Is iterable. Has a <code>forEach()</code> method. Can use objects as
+			keys.</li>
+	</ul>
+
+	<h1> JS Object Methods</h1>
+	<p>Can refer to page. <code>writable</code>, <code>enumerable</code>, <code>configurable</code>. Can modify these
+		with `Object.defineProperty(example_object, “property-name”, {writable:false});</p>
+	<p>keep in mind that these are methods of the actual <tt>object</tt> class and not of specific objects.</p>
+
+</body>
+
+
+</html>

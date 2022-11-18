@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--- called js_tutorials because this page was originally going to host all the tutorials --->
+
+<head>
+	<title>W3 JS Classes</title>
+	<link rel="icon" type="image/x-icon" href="../images/watermelon_favicon/favicon.ico">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</script>
+	<style>
+		pre {
+			background-color: #f9ebf9;
+		}
+
+		tt,
+		code {
+			background-color: #f9ebf9;
+		}
+	</style>
+</head>
+
+
+
+<header>
+	<a href="../index.html" alt="the index page"> go back to index</a>
+</header>
+
+<body>
+	<h1>JS Class Intro</h1>
+	<pre><code>class Car {
+  constructor(name, year) {
+    this.name = name;
+    this.year = year;
+  }
+   age() {
+     let date = new Date();
+     return date.getFullYear() - this.year;
+     }
+}
+let myCar1 = new Car(&quot;Ford&quot;, 2014);
+document.getElementById("demo").innerHTML =
+"My car is " + myCar.age() + " years old.";
+</code></pre>
+	Has to be done in strict mode.
+
+	<h1>JS Class Inheritance</h1>
+	<pre><code>class Car {
+  constructor(brand) {
+    this.carname = brand;
+  }
+  present() {
+    return &#39;I have a &#39; + this.carname;
+  }
+}
+
+class Model extends Car {
+  constructor(brand, mod) {
+    super(brand);
+    this.model = mod;
+  }
+  show() {
+    return this.present() + &#39;, it is a &#39; + this.model;
+  }
+}</code></pre>
+	<h2>Getters and Setters</h2>
+	<pre><code>class Car {
+  constructor(brand) {
+    this._carname = brand;
+  }
+  get carname() {
+    return this._carname;
+  }
+  set carname(x) {
+    this._carname = x;
+  }
+}
+
+let myCar = new Car(&quot;Ford&quot;);
+myCar.carname = &quot;Volvo&quot;;
+document.getElementById(&quot;demo&quot;).innerHTML = myCar.carname; </code></pre>
+	Note that class definitions are not hoisted.
+	<h1>JS Class Static</h1>
+	Works on the class itself rather than an instance of the class:
+	<pre><code>class Car {
+  constructor(name) {
+    this.name = name;
+  }
+  static hello() {
+    return &quot;Hello!!&quot;;
+  }
+}
+
+let myCar = new Car(&quot;Ford&quot;);
+
+// You can call &#39;hello()&#39; on the Car Class:
+document.getElementById(&quot;demo&quot;).innerHTML = Car.hello();</code></pre>
+	If you want to use an instance of an object in JS you have to pass it as an argument:
+
+	<pre><code>class Car {
+  constructor(name) {
+    this.name = name;
+  }
+  static hello(x) {
+    return &quot;Hello &quot; + x.name;
+  }
+}
+let myCar = new Car(&quot;Ford&quot;);
+document.getElementById(&quot;demo&quot;).innerHTML = Car.hello(myCar); </code></pre>
+
+
+</body>
+
+</html>
