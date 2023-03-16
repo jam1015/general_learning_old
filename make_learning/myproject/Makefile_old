@@ -1,0 +1,21 @@
+#.DEFAULT_GOAL := generate
+.PHONY = all say_hello generate clean
+
+CC := gcc
+CC := ${CC}
+
+all: say_hello generate
+
+hello: hello.c
+	${CC} hello.c -o hello
+
+say_hello:
+	@echo "Hello World"
+
+generate:
+	@echo "Creating empty text files..."
+	touch file-{1..10}.txt
+
+clean:
+	@echo "Cleaning up..."
+	rm *.txt
