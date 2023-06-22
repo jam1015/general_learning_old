@@ -4,5 +4,3 @@
 (in-package :vlime) ; the new line
 (symbol-value (find-symbol "*PACKAGE*" "COMMON-LISP"))  ; the new line
 (quit)
-(fibonacci:generate 10)
-(make-instance 'fibonacci:generator)

@@ -1,0 +1,13 @@
+
+(;; Install ace-window
+(straight-use-package 'ace-window)
+
+;; Enable ace-window and assign a keybinding
+(global-set-key (kbd "M-o") 'ace-window)
+h;; Install ace-window
+(straight-use-package 'ace-window)
+
+;; Enable ace-window and assign a keybinding
+(global-set-key (kbd "M-o") 'ace-window)
+ere we go)go
+

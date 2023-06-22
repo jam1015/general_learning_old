@@ -11,9 +11,9 @@ I use `\` to reperesent `<localleader>`. Use your localleader.
 ```
 sbcl --load  ~/.local/share/nvim/lazy/vlime/lisp/start-vlime.lisp
 ```
+
 or wherever the vlime repo is
 
-or 
 
 to connect:
 
@@ -21,19 +21,17 @@ to connect:
 \cc
 ```
 
-
 or both the above steps combined
 
 ```
 \rr
 ```
 
-to list all channels:
+to list all channels, and choose a connection:
 
 ```
 \cs
 ```
-
 
 to close a connection:
 
@@ -83,6 +81,8 @@ press `<CR>` on warning to jump to location
 `\of` to compile `vlime-mappings-compile`
 
 in debugger we can press `<CR>` on top of option we want
+
+# Runing/Debugging
 
 can change debug policy:
 
